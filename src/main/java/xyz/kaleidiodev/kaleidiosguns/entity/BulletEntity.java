@@ -295,7 +295,7 @@ public class BulletEntity extends AbstractFireballEntity {
 					AxisAlignedBB tempBB = victim.getBoundingBox();
 					double enemyBoxHeight = (tempBB.getYsize() / 2);
 					double enemyTop = tempBB.getCenter().y + enemyBoxHeight;
-					double enemyChin = enemyTop - ((enemyBoxHeight * 2) / 4);
+					double enemyChin = enemyTop - ((enemyBoxHeight * 2) / KGConfig.headshotBoxDivider.get());
 
 					//if the raytrace is at or above the enemy's chin, it's a headshot
 					//the chin is a third of the height from the top of the entity

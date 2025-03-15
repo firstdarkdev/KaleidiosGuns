@@ -18,6 +18,7 @@ public class KGConfig {
     public static ForgeConfigSpec.DoubleValue luckEffectInaccuracyDivider;
     public static ForgeConfigSpec.DoubleValue headshotMultiplierMaximum;
     public static ForgeConfigSpec.DoubleValue headshotMultiplierMinimum;
+    public static ForgeConfigSpec.DoubleValue headshotBoxDivider;
     public static ForgeConfigSpec.DoubleValue projectileProtectionHelmetHeadshotReduction;
     public static ForgeConfigSpec.BooleanValue showClassDetails;
     public static ForgeConfigSpec.BooleanValue showWeaponDetails;
@@ -408,6 +409,9 @@ public class KGConfig {
         headshotMultiplierMinimum = builder
                 .comment("Configure the damage multiplier for a headshot")
                 .defineInRange("headshotMinimumMultiplier", 1.5D, 1D, 100D);
+        headshotBoxDivider = builder
+                .comment("Configure how much of half of the top of the creature is the head box.")
+                .defineInRange("headshotBoxDivider", 4D, 0.5D, 100D);
         projectileProtectionHelmetHeadshotReduction = builder
                 .comment("Configure the damage difference above x1.0 for a headshot, reduced by projectile protection, put into a base calculation for a logarithm")
                 .defineInRange("projectileProtectionHelmetHeadshotReduction", 1.5D, 1D, 100D);
