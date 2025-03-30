@@ -552,7 +552,7 @@ public class KGConfig {
                 .defineInRange("goldShowmanEnchantability", 14, 0, 30);
          goldShowmanDurability = builder
                 .comment("Configure the Durability for Showman's Handguns")
-                .defineInRange("goldShowmanDurability", 409, 0, 32767);
+                .defineInRange("goldShowmanDurability", 375, 0, 32767);
         goldShowmanInaccuracy = builder
                 .comment("Configure the Inaccuracy for Showman's Handguns")
                 .defineInRange("goldShowmanInaccuracy", 1.4D, 0D, 90D);
@@ -561,7 +561,7 @@ public class KGConfig {
                 .defineInRange("goldShowmanProjectileSpeed", 7D, 0D, 64D);
         goldShowmanTwoHandedUse = builder
                 .comment("Configure the bonus for using a Showman Handgun with one hand open")
-                .defineInRange("goldShowmanTwoHandedUse", 1.2D, 0.1D, 10.0D);
+                .defineInRange("goldShowmanTwoHandedUse", 1.4D, 0.1D, 10.0D);
         goldShowmanSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Showman's Handguns")
                 .defineInRange("goldShowmanSwitchSpeed", 2.0D, 0D, 5D);
@@ -618,7 +618,7 @@ public class KGConfig {
         builder.push("shotgun");
         diamondShotgunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Shotguns")
-                .defineInRange("diamondShotgunDamageMultiplier", 0.6D, 0.1D, 5D);
+                .defineInRange("diamondShotgunDamageMultiplier", 0.64D, 0.1D, 5D);
         diamondShotgunFireDelay = builder
                 .comment("Configure the Fire delay for Shotguns")
                 .defineInRange("diamondShotgunFireDelay", 16, 0, 72000);
@@ -627,7 +627,7 @@ public class KGConfig {
                 .defineInRange("diamondShotgunEnchantability", 1, 0, 30);
         diamondShotgunDurability = builder
                 .comment("Configure the Durability for Shotguns")
-                .defineInRange("diamondShotgunDurability", 400, 0, 32767);
+                .defineInRange("diamondShotgunDurability", 375, 0, 32767);
         diamondShotgunInaccuracy = builder
                 .comment("Configure the Inaccuracy for Shotguns")
                 .defineInRange("diamondShotgunInaccuracy", 5D, 0D, 90D);
@@ -645,25 +645,25 @@ public class KGConfig {
                 .defineInRange("diamondShotgunMeleeDamage", 4D, 0D, 40D);
         diamondShotgunCost = builder
                 .comment("Ammo cost to fire Shotguns")
-                .defineInRange("diamondShotgunCost", 10, 0, 64);
+                .defineInRange("diamondShotgunCost", 6, 0, 64);
         builder.pop();
 
         builder.push("blunderbuss");
         blunderbussDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Blunderbusses")
-                .defineInRange("blunderbussDamageMultiplier", 0.2D, 0.1D, 5D);
+                .defineInRange("blunderbussDamageMultiplier", 0.25D, 0.1D, 5D);
         blunderbussFireDelay = builder
                 .comment("Configure the Fire delay for Blunderbusses")
-                .defineInRange("blunderbussFireDelay", 20, 0, 72000);
+                .defineInRange("blunderbussFireDelay", 25, 0, 72000);
         blunderbussEnchantability = builder
                 .comment("Configure the Enchantability for Blunderbusses")
                 .defineInRange("blunderbussEnchantability", 5, 0, 30);
         blunderbussDurability = builder
                 .comment("Configure the Durability for Blunderbusses")
-                .defineInRange("blunderbussDurability", 600, 0, 32767);
+                .defineInRange("blunderbussDurability", 480, 0, 32767);
         blunderbussInaccuracy = builder
                 .comment("Configure the Inaccuracy for Blunderbusses")
-                .defineInRange("blunderbussInaccuracy", 8D, 0D, 90D);
+                .defineInRange("blunderbussInaccuracy", 6D, 0D, 90D);
         blunderbussBulletCount = builder
                 .comment("Configure the amount of Bullets at once for Blunderbusses")
                 .defineInRange("blunderbussBulletCount", 10, 0, 50);
@@ -678,7 +678,7 @@ public class KGConfig {
                 .defineInRange("blunderbussMeleeDamage", 4D, 0D, 40D);
         blunderbussCost = builder
                 .comment("Ammo cost to fire Blunderbusses")
-                .defineInRange("blunderbussCost", 16, 0, 64);
+                .defineInRange("blunderbussCost", 12, 0, 64);
         blunderbussMinimumSpeed = builder
                 .comment("Configure the Minimum Speed for projectiles shot from Blunderbusses")
                 .defineInRange("blunderbussMinimumSpeed", 0.5D, 0.1D, 10D);
@@ -726,7 +726,7 @@ public class KGConfig {
         builder.push("double barrel shotgun");
         goldDoubleShotgunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Double Barrel Shotguns")
-                .defineInRange("goldDoubleShotgunDamageMultiplier", 0.5D, 0.1D, 5D);
+                .defineInRange("goldDoubleShotgunDamageMultiplier", 0.6D, 0.1D, 5D);
         goldDoubleShotgunFireDelay = builder
                 .comment("Configure the Fire delay for Double Barrel Shotguns")
                 .defineInRange("goldDoubleShotgunFireDelay", 20, 0, 72000);
@@ -735,7 +735,7 @@ public class KGConfig {
                 .defineInRange("goldDoubleShotgunEnchantability", 14, 0, 30);
         goldDoubleShotgunDurability = builder
                 .comment("Configure the Durability for Double Barrel Shotguns")
-                .defineInRange("goldDoubleShotgunDurability", 240, 0, 32767);
+                .defineInRange("goldDoubleShotgunDurability", 250, 0, 32767);
         goldDoubleShotgunInaccuracy = builder
                 .comment("Configure the Inaccuracy for Double Barrel Shotguns")
                 .defineInRange("goldDoubleShotgunInaccuracy", 5D, 0D, 90D);
@@ -759,13 +759,13 @@ public class KGConfig {
                 .defineInRange("goldDoubleShotgunMeleeDamage", 4D, 0D, 40D);
         goldDoubleShotgunCost = builder
                 .comment("Ammo cost to fire Double Barrel Shotguns")
-                .defineInRange("goldDoubleShotgunCost", 6, 0, 64);
+                .defineInRange("goldDoubleShotgunCost", 4, 0, 64);
         builder.pop();
 
         builder.push("vampire shotgun");
         netheriteShotgunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Vampire Shotguns")
-                .defineInRange("netheriteShotgunDamageMultiplier", 0.6D, 0.1D, 5D);
+                .defineInRange("netheriteShotgunDamageMultiplier", 0.7D, 0.1D, 5D);
         netheriteShotgunFireDelay = builder
                 .comment("Configure the Fire delay for Vampire Shotguns")
                 .defineInRange("netheriteShotgunFireDelay", 12, 0, 72000);
@@ -774,7 +774,7 @@ public class KGConfig {
                 .defineInRange("netheriteShotgunEnchantability", 6, 0, 30);
         netheriteShotgunDurability = builder
                 .comment("Configure the Durability for Vampire Shotguns")
-                .defineInRange("netheriteShotgunDurability", 598, 0, 32767);
+                .defineInRange("netheriteShotgunDurability", 512, 0, 32767);
         netheriteShotgunInaccuracy = builder
                 .comment("Configure the Inaccuracy for Vampire Shotguns")
                 .defineInRange("netheriteShotgunInaccuracy", 6D, 0D, 90D);
@@ -804,13 +804,13 @@ public class KGConfig {
                 .defineInRange("netheriteShotgunMeleeDamage", 4D, 0D, 40D);
         netheriteShotgunCost = builder
                 .comment("Ammo cost to fire Vampire Shotguns")
-                .defineInRange("netheriteShotgunCost", 8, 0, 64);
+                .defineInRange("netheriteShotgunCost", 5, 0, 64);
         builder.pop();
 
         builder.push("sniper rifle");
         diamondSniperDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Snipers")
-                .defineInRange("diamondSniperDamageMultiplier", 2.2D, 0.1D, 5D);
+                .defineInRange("diamondSniperDamageMultiplier", 2.5D, 0.1D, 5D);
         diamondSniperFireDelay = builder
                 .comment("Configure the Fire delay for Snipers")
                 .defineInRange("diamondSniperFireDelay", 24, 0, 72000);
@@ -819,7 +819,7 @@ public class KGConfig {
                 .defineInRange("diamondSniperEnchantability", 1, 0, 30);
         diamondSniperDurability = builder
                 .comment("Configure the Durability for Snipers")
-                .defineInRange("diamondSniperDurability", 459, 0, 32767);
+                .defineInRange("diamondSniperDurability", 404, 0, 32767);
         diamondSniperInaccuracy = builder
                 .comment("Configure the Inaccuracy for Snipers")
                 .defineInRange("diamondSniperInaccuracy", 0D, 0D, 90D);
@@ -846,7 +846,7 @@ public class KGConfig {
         builder.push("bayonet sniper");
         emeraldMusketDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Muskets")
-                .defineInRange("emeraldMusketDamageMultiplier", 2.5D, 0.1D, 5D);
+                .defineInRange("emeraldMusketDamageMultiplier", 3D, 0.1D, 5D);
         emeraldMusketFireDelay = builder
                 .comment("Configure the Fire delay for Muskets")
                 .defineInRange("emeraldMusketFireDelay", 24, 0, 72000);
@@ -855,7 +855,7 @@ public class KGConfig {
                 .defineInRange("emeraldMusketEnchantability", 9, 0, 30);
         emeraldMusketDurability = builder
                 .comment("Configure the Durability for Muskets")
-                .defineInRange("emeraldMusketDurability", 288, 0, 32767);
+                .defineInRange("emeraldMusketDurability", 240, 0, 32767);
         emeraldMusketInaccuracy = builder
                 .comment("Configure the Inaccuracy for Muskets")
                 .defineInRange("emeraldMusketInaccuracy", 0D, 0D, 90D);
@@ -984,7 +984,7 @@ public class KGConfig {
                 .defineInRange("diamondMinegunInaccuracy", 0D, 0D, 90D);
         diamondMinegunProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Mineguns")
-                .defineInRange("diamondMinegunProjectileSpeed", 2D, 0D, 64D);
+                .defineInRange("diamondMinegunProjectileSpeed", 4D, 0D, 64D);
         diamondMinegunMineChance = builder
                 .comment("Configure the Break Block Chance for Mineguns")
                 .defineInRange("diamondMinegunMineChance", 0.25D, 0D, 1D);
@@ -1020,7 +1020,7 @@ public class KGConfig {
                 .defineInRange("netheriteMinegunInaccuracy", 0D, 0D, 90D);
         netheriteMinegunProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Nethermaykr")
-                .defineInRange("netheriteMinegunProjectileSpeed", 1.8D, 0D, 64D);
+                .defineInRange("netheriteMinegunProjectileSpeed", 3.6D, 0D, 64D);
         netheriteMinegunMineChance = builder
                 .comment("Configure the Break Block Chance for Nethermaykr")
                 .defineInRange("netheriteMinegunMineChance", 0.33D, 0D, 1D);
@@ -1077,7 +1077,7 @@ public class KGConfig {
                 .defineInRange("ironVoltgunMeleeDamage", 2D, 0D, 40D);
         ironVoltgunCost = builder
                 .comment("Ammo cost to fire Voltguns")
-                .defineInRange("ironVoltgunCost", 1, 0, 64);
+                .defineInRange("ironVoltgunCost", 2, 0, 64);
         ironVoltgunReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Voltguns")
                 .defineInRange("ironVoltgunReplacementInaccuracy", 1D, 0D, 40D);
@@ -1110,7 +1110,7 @@ public class KGConfig {
                 .defineInRange("diamondAssaultMeleeDamage", 2D, 0D, 40D);
         diamondAssaultCost = builder
                 .comment("Ammo cost to fire Assault Rifles")
-                .defineInRange("diamondAssaultCost", 2, 0, 64);
+                .defineInRange("diamondAssaultCost", 1, 0, 64);
         diamondAssaultSlowTicks = builder
                 .comment("Configure the length mining fatigue for Assault Rifles")
                 .defineInRange("diamondAssaultSlowTicks", 60, 10, 72000);
@@ -1122,7 +1122,7 @@ public class KGConfig {
         builder.push("lava bound smg");
         lavaSmgDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Lava Bound SMGs")
-                .defineInRange("lavaSmgDamageMultiplier", 0.375D, 0.1D, 5D);
+                .defineInRange("lavaSmgDamageMultiplier", 0.5D, 0.1D, 5D);
         lavaSmgFireDelay = builder
                 .comment("Configure the Fire delay for Lava Bound SMGs")
                 .defineInRange("lavaSmgFireDelay", 2, 0, 72000);
@@ -1131,7 +1131,7 @@ public class KGConfig {
                 .defineInRange("lavaSmgEnchantability", 6, 0, 30);
         lavaSmgDurability = builder
                 .comment("Configure the Durability for Lava Bound SMGs")
-                .defineInRange("lavaSmgDurability", 3826, 0, 32767);
+                .defineInRange("lavaSmgDurability", 2870, 0, 32767);
         lavaSmgInaccuracy = builder
                 .comment("Configure the Inaccuracy for Lava Bound SMGs")
                 .defineInRange("lavaSmgInaccuracy", 3D, 0D, 90D);
@@ -1173,7 +1173,7 @@ public class KGConfig {
                 .defineInRange("goldPlasmaInaccuracy", 0D, 0D, 90D);
         goldPlasmaProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Plasma Rifles")
-                .defineInRange("goldPlasmaProjectileSpeed", 1.8D, 0D, 64D);
+                .defineInRange("goldPlasmaProjectileSpeed", 4D, 0D, 64D);
         goldPlasmaShieldAdditional = builder
                 .comment("Configure the chance for shields to be disabled against Plasma Rifles")
                 .defineInRange("goldPlasmaShieldAdditional", 0.25D, 0.01D, 1D);
