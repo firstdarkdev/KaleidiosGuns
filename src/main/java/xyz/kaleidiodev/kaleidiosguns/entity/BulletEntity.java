@@ -97,6 +97,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	public boolean didNoDamage;
 	public boolean silenced;
 	public boolean shouldSlow;
+	public float postCarbineHeadshot;
 
 	protected Set<Entity> entityHitHistory = new HashSet<>();
 	public Set<Entity> headshotHistory = new HashSet<>();
@@ -510,11 +511,11 @@ public class BulletEntity extends AbstractFireballEntity {
 		//we need to trick minecraft into thinking the projectile is still in front of any shields.
 		Vector3d posCache = position();
 		setPos(lastPos.x, lastPos.y, lastPos.z);
-		boolean damaged = victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter)).setProjectile(), (float) bullet.modifyDamage(damage, this, victim, shooter, level));
-		if (damaged && armorBonus && (victim instanceof LivingEntity)) {
-			// + (healthOfVictim - ((LivingEntity)victim).getHealth())
-			victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter).setMagic().setProjectile().bypassArmor()), KGConfig.ironCarbineArmorBonus.get().floatValue());
-		}
+
+		IndirectEntityDamageSource newSource = new IndirectEntityDamageSource("arrow", this, shooter);
+		newSource.setProjectile();
+		if (armorBonus) newSource.bypassInvul();
+		boolean damaged = victim.hurt(newSource, (float) bullet.modifyDamage(damage, this, victim, shooter, level));
 
 		setPos(posCache.x, posCache.y, posCache.z);
 

@@ -115,6 +115,8 @@ public interface IBullet {
 				}
 			}
 
+			projectile.postCarbineHeadshot = (float)actualHeadshot;
+
 			newDamage *= actualHeadshot;
 		}
 
