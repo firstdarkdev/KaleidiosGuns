@@ -3,6 +3,7 @@ package xyz.kaleidiodev.kaleidiosguns.entity;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.block.*;
 import net.minecraft.command.arguments.TeamArgument;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -509,10 +510,10 @@ public class BulletEntity extends AbstractFireballEntity {
 		//we need to trick minecraft into thinking the projectile is still in front of any shields.
 		Vector3d posCache = position();
 		setPos(lastPos.x, lastPos.y, lastPos.z);
-		boolean damaged = victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter)).setProjectile().bypassInvul(), (float) bullet.modifyDamage(damage, this, victim, shooter, level));
+		boolean damaged = victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter)).setProjectile(), (float) bullet.modifyDamage(damage, this, victim, shooter, level));
 		if (damaged && armorBonus && (victim instanceof LivingEntity)) {
 			// + (healthOfVictim - ((LivingEntity)victim).getHealth())
-			victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter).setMagic().setProjectile().bypassArmor().bypassInvul()), KGConfig.ironCarbineArmorBonus.get().floatValue());
+			victim.hurt((new IndirectEntityDamageSource("arrow", this, shooter).setMagic().setProjectile().bypassArmor()), KGConfig.ironCarbineArmorBonus.get().floatValue());
 		}
 
 		setPos(posCache.x, posCache.y, posCache.z);
@@ -521,6 +522,9 @@ public class BulletEntity extends AbstractFireballEntity {
 			if (healthOfVictim == ((LivingEntity)victim).getHealth()) {
 				didNoDamage = true;
 			}
+
+			EnchantmentHelper.doPostHurtEffects((LivingEntity)victim, shooter);
+			EnchantmentHelper.doPostDamageEffects((LivingEntity)shooter, victim);
 		}
 		else didNoDamage = true;
 
