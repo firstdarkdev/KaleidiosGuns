@@ -100,7 +100,7 @@
 	"tooltip.kaleidiosguns.gravity": "Shots fall due to gravity§r",
 	"tooltip.kaleidiosguns.potion": "Consumes an offhand potion to apply effects§r",
 	"tooltip.kaleidiosguns.interact": "Interacts with right-clickable blocks",
-	"tooltip.kaleidiosguns.armor_bonus": "Ignores Projectile Protection (besides helmets)",
+	"tooltip.kaleidiosguns.armor_bonus": "Adds %s extra armor-ignorant damage",
 	"tooltip.kaleidiosguns.wither_head": "Adds an extra projectile by consuming an off-hand Wither Skull",
 	"tooltip.kaleidiosguns.heals": "Heals friendly entities via Instant Health",
 	"tooltip.kaleidiosguns.slows": "Has a chance to give Mining Fatigue",
