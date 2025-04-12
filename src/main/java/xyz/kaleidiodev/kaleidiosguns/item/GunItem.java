@@ -81,7 +81,6 @@ public class GunItem extends Item {
 	protected double baseDamage;
 	protected double currentSpeed;
 	protected double currentDamage;
-	protected int meleeBonusCounter;
 	protected double mineChance;
 	protected int ammoCost = 1;
 	protected int burstSpeed;
@@ -400,7 +399,6 @@ public class GunItem extends Item {
 		shot.shouldBreakDoors = this.breachDoors;
 		shot.shouldFlinch = this.canFlinch;
 		shot.healsFriendlies = this.isDefender;
-		shot.isMeleeBonus = this.meleeBonusCounter > 0;
 		shot.shootsLights = this.isShadow;
 		shot.juggle = this.isJuggler;
 		shot.interactsWithBlocks = this.interactsWithBlocks;
@@ -462,12 +460,21 @@ public class GunItem extends Item {
 			}
 		}
 
-		if (this.meleeBonusCounter > 0) this.meleeBonusCounter--;
+
 
 		changeBullet(world, player, gun, shot, bulletFree);
 
 		//reset timer for stability
 		CompoundNBT nbt = gun.getOrCreateTag();
+
+		int meleeBonus = nbt.getInt("meleeBonusCounter");
+		if (meleeBonus > 0)
+		{
+			meleeBonus--;
+			shot.isMeleeBonus = true;
+			nbt.putInt("meleeBonusCounter", meleeBonus);
+		}
+		else shot.isMeleeBonus = false;
 
 		int base = Math.max(1, stabilityTime - (int)(stabilityTime * EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.sleightOfHand, gun) * KGConfig.sleightOfHandFireRateDecrease.get()));
 		nbt.putInt("stabilizerTimer", base);
@@ -535,7 +542,9 @@ public class GunItem extends Item {
 
 	@Override
 	public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-		if (this.isMeleeBonus) this.meleeBonusCounter = KGConfig.emeraldMusketPostMeleeCount.get();
+		CompoundNBT nbt = pStack.getOrCreateTag();
+
+		if (this.isMeleeBonus) nbt.putInt("meleeBonusCounter", KGConfig.emeraldMusketPostMeleeCount.get());
 		return super.hurtEnemy(pStack, pTarget, pAttacker);
 	}
 
