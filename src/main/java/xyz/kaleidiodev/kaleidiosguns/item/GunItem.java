@@ -1141,7 +1141,7 @@ public class GunItem extends Item {
 				if (interactsWithBlocks) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.interact"));
 				if (breachDoors) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.doors"));
 				if (isCorruption) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.corruption"));
-				if (armorBonus) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.armor_bonus", KGConfig.ironCarbineArmorBonus.get()));
+				if (armorBonus) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.armor_bonus"));
 				if (this.getItem() == ModItems.doubleBarrelShotgun) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.knockback"));
 				if (this.getItem() == ModItems.plasmaGatling) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.plasma"));
 				if (witherHead) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.wither_head"));
