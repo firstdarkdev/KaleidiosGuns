@@ -1,11 +1,13 @@
 package xyz.kaleidiodev.kaleidiosguns.item;
 
+import net.minecraft.block.*;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
@@ -155,6 +157,31 @@ public class GatlingItem extends GunItem {
 					checkPos = new BlockPos(x, y, z);
 					if (world.getBlockEntity(checkPos) != null) {
 						// check if it is closer than any previously found position
+						if (closestPos == null ||
+								player.blockPosition().distManhattan(checkPos) < player.blockPosition().distManhattan(closestPos)) {
+							closestPos = checkPos;
+						}
+					}
+
+					// Also accept protecting circuitry, lights and doors
+					Block block = world.getBlockState(checkPos).getBlock();
+					if ((BlockTags.DOORS.getValues().contains(block))
+					|| block instanceof LeverBlock
+					|| BlockTags.BUTTONS.getValues().contains(block)
+					|| BlockTags.PRESSURE_PLATES.getValues().contains(block)
+					|| block instanceof RedstoneDiodeBlock
+					|| block instanceof RedstoneLampBlock
+					|| block instanceof RedstoneBlock
+					|| block instanceof RedstoneWireBlock
+					|| block instanceof RedstoneOreBlock
+					|| block instanceof ObserverBlock
+					|| block instanceof PistonBlock
+					|| block instanceof TorchBlock
+					|| block == Blocks.GLOWSTONE
+					|| block == Blocks.CONDUIT
+					|| block == Blocks.SEA_LANTERN
+					|| block == Blocks.SEA_PICKLE)
+					{
 						if (closestPos == null ||
 								player.blockPosition().distManhattan(checkPos) < player.blockPosition().distManhattan(closestPos)) {
 							closestPos = checkPos;

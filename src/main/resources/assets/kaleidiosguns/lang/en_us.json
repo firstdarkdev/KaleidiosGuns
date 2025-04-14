@@ -82,7 +82,7 @@
 	"tooltip.kaleidiosguns.corruption": "Replaces blocks with nether equivalents§r",
 	"tooltip.kaleidiosguns.redstone": "A Redstone Block must be close-by to use this weapon§r",
 	"tooltip.kaleidiosguns.voltage": "Increases damage the closer you are to a Redstone Block§r",
-	"tooltip.kaleidiosguns.defender": "Increases fire rate if standing near any Tile Entity§r",
+	"tooltip.kaleidiosguns.defender": "Fire rate increases if near Functional Blocks (doors, levers, chests, etc.)§r",
 	"tooltip.kaleidiosguns.sensitive": "Accuracy decreases if shot in midair or whilst not crouching§r",
 	"tooltip.kaleidiosguns.explosive": "Explosive projectiles, requires non-flint ammo§r",
 	"tooltip.kaleidiosguns.shatter": "Gives a 'flinch' of weakness.",
