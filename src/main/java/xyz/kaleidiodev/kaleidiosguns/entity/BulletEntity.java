@@ -231,12 +231,12 @@ public class BulletEntity extends AbstractFireballEntity {
 
 				//if we hit something we also need to immediately do a trace to it.
 				if (this.isUnderWater()) {
-					if (actualTick >= 1) placeParticle(ParticleTypes.BUBBLE, position, motionDiv);
 					if (pollRemove) placeParticle(ParticleTypes.BUBBLE, this.getBoundingBox().getCenter(), motionDivHit);
+					else placeParticle(ParticleTypes.BUBBLE, position, motionDiv);
 				}
 				else {
-					if (actualTick >= 1) placeParticle(this.getTrailParticle(), position, motionDiv);
 					if (pollRemove) placeParticle(this.getTrailParticle(), this.getBoundingBox().getCenter(), motionDivHit);
+					else placeParticle(this.getTrailParticle(), position, motionDiv);
 				}
 			}
 		}
@@ -244,7 +244,7 @@ public class BulletEntity extends AbstractFireballEntity {
 		// Instantly remove if laser.
 		if (laser)
 		{
-			this.remove();
+			pollRemove = true;
 			return;
 		}
 
