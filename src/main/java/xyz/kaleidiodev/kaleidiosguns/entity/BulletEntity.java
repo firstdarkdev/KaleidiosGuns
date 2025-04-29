@@ -2,6 +2,7 @@ package xyz.kaleidiodev.kaleidiosguns.entity;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.block.*;
+import net.minecraft.client.audio.SoundSource;
 import net.minecraft.command.arguments.TeamArgument;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
@@ -595,7 +596,17 @@ public class BulletEntity extends AbstractFireballEntity {
 		if (this.getShootingGun() == null) return;
 		double newRadius = this.getShootingGun().damageMultiplier;
 
-		level.explode(this, position.x, position.y, position.z, (float)newRadius, isOnFire(), KGConfig.explosionsEnabled.get() ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+		if (applyMode != PotionApplyMode.INJECT)
+		{
+			level.explode(this, position.x, position.y, position.z, (float)newRadius, isOnFire(), KGConfig.explosionsEnabled.get() ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+		}
+		else
+		{
+			splashPotion(position, newRadius);
+			lingerPotion(position, newRadius);
+			level.playSound(null, position.x, position.y, position.z, SoundEvents.GLASS_BREAK, SoundCategory.VOICE, 1.0f, (random.nextFloat() * 0.5f) + 0.75f);
+		}
+
 		if (isWither) {
 			newRadius *= KGConfig.witherLauncherEffectRadiusMultiplier.get();
 
@@ -607,33 +618,41 @@ public class BulletEntity extends AbstractFireballEntity {
 		}
 
 		if (applyMode == PotionApplyMode.SPLASH) {
-			for (EffectInstance effect : potionInstance) {
-				List<LivingEntity> entities = getExplosionAffected(position, newRadius * KGConfig.potionCannonSplashMultiplier.get());
-
-				for (LivingEntity mob : entities) {
-					//we must construct a new one because java's for loop will destroy this instance
-					mob.addEffect(new EffectInstance(effect));
-				}
-			}
-
+			splashPotion(position, newRadius);
 		}
 
 		if (applyMode == PotionApplyMode.LINGER) {
-			AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(level, position.x, position.y, position.z);
-
-			areaEffectCloud.setDuration(lingeringTime);
-			areaEffectCloud.setRadius((float)newRadius * 2);
-			areaEffectCloud.setRadiusPerTick(-((float)newRadius / lingeringTime));
-			areaEffectCloud.setWaitTime(10);
-
-			for (EffectInstance effect : potionInstance) {
-				areaEffectCloud.addEffect(effect);
-			}
-
-			level.addFreshEntity(areaEffectCloud);
+			lingerPotion(position, newRadius);
 		}
 
 		remove();
+	}
+
+	public void splashPotion(Vector3d position, double newRadius)
+	{
+		for (EffectInstance effect : potionInstance) {
+			List<LivingEntity> entities = getExplosionAffected(position, newRadius * KGConfig.potionCannonSplashMultiplier.get());
+
+			for (LivingEntity mob : entities) {
+				//we must construct a new one because java's for loop will destroy this instance
+				mob.addEffect(new EffectInstance(effect));
+			}
+		}
+	}
+
+	public void lingerPotion(Vector3d position, double newRadius)
+	{
+		AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(level, position.x, position.y, position.z);
+
+		areaEffectCloud.setDuration(lingeringTime);
+		areaEffectCloud.setRadius((float)newRadius * 2);
+		areaEffectCloud.setWaitTime(10);
+
+		for (EffectInstance effect : potionInstance) {
+			areaEffectCloud.addEffect(effect);
+		}
+
+		level.addFreshEntity(areaEffectCloud);
 	}
 
 	public List<LivingEntity> getExplosionAffected(Vector3d position, double newRadius) {
