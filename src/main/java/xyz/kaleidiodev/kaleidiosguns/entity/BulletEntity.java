@@ -98,6 +98,8 @@ public class BulletEntity extends AbstractFireballEntity {
 	public boolean silenced;
 	public boolean shouldSlow;
 	public float postCarbineHeadshot;
+	public boolean laser;
+	public boolean blindOnHead;
 
 	protected Set<Entity> entityHitHistory = new HashSet<>();
 	public Set<Entity> headshotHistory = new HashSet<>();
@@ -219,23 +221,31 @@ public class BulletEntity extends AbstractFireballEntity {
 
 			int divisor = KGConfig.particlesPerTick.get();
 			//if the particle count per tick is zero, disable trail particles entirely.
-			if (divisor == 0) return;
+			if (divisor > 0)
+			{
+				//interpolation is always ahead, we want to draw particles for the last tick travelled not the current.
+				Vector3d position = this.getBoundingBox().getCenter().subtract(this.getDeltaMovement());
+				Vector3d motionDiv = this.getDeltaMovement().multiply(new Vector3d(1D / (double)divisor, 1D / (double)divisor, 1D / (double)divisor));
+				//delta of last tick to hit position is not always the projectile velocity
+				Vector3d motionDivHit = this.position().subtract(prevPos).multiply(new Vector3d(1D / (double)divisor, 1D / (double)divisor, 1D / (double)divisor));
 
-			//interpolation is always ahead, we want to draw particles for the last tick travelled not the current.
-			Vector3d position = this.getBoundingBox().getCenter().subtract(this.getDeltaMovement());
-			Vector3d motionDiv = this.getDeltaMovement().multiply(new Vector3d(1D / (double)divisor, 1D / (double)divisor, 1D / (double)divisor));
-			//delta of last tick to hit position is not always the projectile velocity
-			Vector3d motionDivHit = this.position().subtract(prevPos).multiply(new Vector3d(1D / (double)divisor, 1D / (double)divisor, 1D / (double)divisor));
+				//if we hit something we also need to immediately do a trace to it.
+				if (this.isUnderWater()) {
+					if (actualTick >= 1) placeParticle(ParticleTypes.BUBBLE, position, motionDiv);
+					if (pollRemove) placeParticle(ParticleTypes.BUBBLE, this.getBoundingBox().getCenter(), motionDivHit);
+				}
+				else {
+					if (actualTick >= 1) placeParticle(this.getTrailParticle(), position, motionDiv);
+					if (pollRemove) placeParticle(this.getTrailParticle(), this.getBoundingBox().getCenter(), motionDivHit);
+				}
+			}
+		}
 
-			//if we hit something we also need to immediately do a trace to it.
-			if (this.isUnderWater()) {
-				if (actualTick > 1) placeParticle(ParticleTypes.BUBBLE, position, motionDiv);
-				if (pollRemove) placeParticle(ParticleTypes.BUBBLE, this.getBoundingBox().getCenter(), motionDivHit);
-			}
-			else {
-				if (actualTick > 1) placeParticle(this.getTrailParticle(), position, motionDiv);
-				if (pollRemove) placeParticle(this.getTrailParticle(), this.getBoundingBox().getCenter(), motionDivHit);
-			}
+		// Instantly remove if laser.
+		if (laser)
+		{
+			this.remove();
+			return;
 		}
 
 		if (!pollRemove) this.traceHits();

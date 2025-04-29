@@ -95,6 +95,8 @@ public class GunItem extends Item {
 	protected boolean armorBonus;
 	protected boolean witherHead;
 	protected boolean shouldSlow;
+	protected boolean isLaserShot;
+	protected boolean blindOnHeadshot;
 
 	protected SoundEvent fireSound = ModSounds.gun;
 	protected SoundEvent reloadSound = ModSounds.double_shotgunReload;
@@ -405,6 +407,8 @@ public class GunItem extends Item {
 		shot.silenced = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.silenced, gun) == 1;
 		shot.armorBonus = this.armorBonus;
 		shot.shouldSlow = this.shouldSlow;
+		shot.laser = isLaserShot;
+		shot.blindOnHead = blindOnHeadshot;
 
 		shot.hero = false;
 		if (isHero) {
@@ -499,9 +503,9 @@ public class GunItem extends Item {
 
 		gun.setTag(nbt);
 
-		shot.traceHits();
-
 		world.addFreshEntity(shot);
+
+		shot.traceHits();
 	}
 
 	public ItemStack getOtherHand(PlayerEntity player) {
@@ -990,6 +994,16 @@ public class GunItem extends Item {
 		return this;
 	}
 
+	public GunItem setLaserShot(boolean laserShot) {
+		this.isLaserShot = laserShot;
+		return this;
+	}
+
+	public GunItem setBlind(boolean blind) {
+		this.blindOnHeadshot = blind;
+		return this;
+	}
+
 	public int getCost(ItemStack stack) {
 		return Math.max(1, ammoCost - (int)(ammoCost * EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.sleightOfHand, stack) * KGConfig.sleightOfHandFireRateDecrease.get()));
 	}
@@ -1023,6 +1037,7 @@ public class GunItem extends Item {
 		if ((enchantment == ModEnchantments.cowboy) && isOneHanded) return false; //not for pistol
 		if (((enchantment == ModEnchantments.sleightOfHand)) && ((me instanceof GatlingItem) || (me.isExplosive))) return false; //not for gatling nor launcher
 		if ((enchantment == ModEnchantments.impact) && ((this == ModItems.minegunGatling) || (this == ModItems.corruptionGatling))) return false; //not for minegun
+		if ((enchantment == ModEnchantments.accelerator) && isLaserShot) return false; // not for laser gun
 
 		//only let these apply to certain gun types
 		if ((enchantment == ModEnchantments.division) && !(me instanceof ShotgunItem)) return false; //shotgun only
@@ -1135,7 +1150,7 @@ public class GunItem extends Item {
 				if (isMeleeBonus) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.melee"));
 				if (isLava) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.lava"));
 				if (isVex) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.vex"));
-				//if (this == ModItems.heroShotgun) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.wave"));
+				if (this == ModItems.heroShotgun) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.wave"));
 				if (isHero) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.hero"));
 				if (isPotion) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.potion"));
 				if (interactsWithBlocks) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.interact"));
@@ -1148,6 +1163,8 @@ public class GunItem extends Item {
 				if (isDefender) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.heals"));
 				if (shouldSlow) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.slows"));
 				if (hasBlockMineAbility) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.minegun"));
+				if (isLaserShot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.laser"));
+				if (blindOnHeadshot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.blind"));
 			}
 
 			if (KGConfig.showWeaponSecrets.get()) {

@@ -278,6 +278,7 @@ public class KGConfig {
     public static ForgeConfigSpec.DoubleValue ironVoltgunMeleeDamage;
     public static ForgeConfigSpec.IntValue ironVoltgunCost;
     public static ForgeConfigSpec.DoubleValue ironVoltgunReplacementInaccuracy;
+    public static ForgeConfigSpec.IntValue ironVoltgunBlindnessTime;
 
     public static ForgeConfigSpec.DoubleValue diamondAssaultDamageMultiplier;
     public static ForgeConfigSpec.IntValue diamondAssaultFireDelay;
@@ -1062,7 +1063,7 @@ public class KGConfig {
                 .defineInRange("ironVoltgunInaccuracy", 0D, 0D, 90D);
         ironVoltgunProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Voltguns")
-                .defineInRange("ironVoltgunProjectileSpeed", 8D, 0D, 64D);
+                .defineInRange("ironVoltgunProjectileSpeed", 160D, 0D, 64D);
         ironVoltgunMinimumDamage = builder
                 .comment("Configure the Minimum damage increase for Voltguns")
                 .defineInRange("ironVoltgunMinimumDamage", 1D, 0D, 5D);
@@ -1081,6 +1082,9 @@ public class KGConfig {
         ironVoltgunReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Voltguns")
                 .defineInRange("ironVoltgunReplacementInaccuracy", 1D, 0D, 40D);
+        ironVoltgunBlindnessTime = builder
+                .comment("Configure the time for Blindness effect on headshot with Voltguns")
+                .defineInRange("ironVoltgunBlindnessTime", 20, 0, 72000);
         builder.pop();
 
         builder.push("assault rifle");

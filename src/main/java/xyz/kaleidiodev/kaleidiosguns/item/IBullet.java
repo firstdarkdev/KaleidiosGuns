@@ -113,6 +113,10 @@ public interface IBullet {
 
 					actualHeadshot = KGConfig.headshotMultiplierMinimum.get() + headshotTemp;
 				}
+
+				if (projectile.blindOnHead) {
+					livingTarget.addEffect(new EffectInstance(Effects.BLINDNESS, KGConfig.ironVoltgunBlindnessTime.get()));
+				}
 			}
 
 			projectile.postCarbineHeadshot = (float)actualHeadshot;

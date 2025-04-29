@@ -109,6 +109,8 @@
 	"tooltip.kaleidiosguns.calibur.blaze": "§dOnly accepts blaze ammo",
 	"tooltip.kaleidiosguns.calibur.hunger": "§dOnly accepts hunger ammo",
 	"tooltip.kaleidiosguns.calibur.xp": "§dOnly accepts cleric ammo",
+	"tooltip.kaleidiosguns.laser": "Shoots limited length lasers instead of bullets",
+	"tooltip.kaleidiosguns.blind": "Blinds the target on headshot",
 
 	"tooltip.kaleidiosguns.blaze_bullet": "Sets entities on fire§r",
 	"tooltip.kaleidiosguns.hunger_bullet": "Uses hunger as ammo§r",
