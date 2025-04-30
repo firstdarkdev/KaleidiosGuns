@@ -1348,7 +1348,7 @@ public class KGConfig {
                 .defineInRange("witherLauncherReplacementInaccuracy", 6D, 0D, 40D);
         witherLauncherBurstSpeed = builder
                 .comment("How many ticks each shot in a burst takes for Wither Launchers")
-                .defineInRange("goldVexBurstSpeed", 5, 0, 64);
+                .defineInRange("witherLauncherBurstSpeed", 3, 0, 64);
         builder.pop();
 
         builder.push("bullet_config");
