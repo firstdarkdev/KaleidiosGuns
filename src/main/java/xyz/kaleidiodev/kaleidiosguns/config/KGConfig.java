@@ -1048,7 +1048,7 @@ public class KGConfig {
         builder.push("voltgun");
         ironVoltgunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Voltguns")
-                .defineInRange("ironVoltgunDamageMultiplier", 1D, 0.1D, 5D);
+                .defineInRange("ironVoltgunDamageMultiplier", 0.5D, 0.1D, 5D);
         ironVoltgunFireDelay = builder
                 .comment("Configure the Fire delay for Voltguns")
                 .defineInRange("ironVoltgunFireDelay", 10, 0, 72000);
@@ -1063,7 +1063,7 @@ public class KGConfig {
                 .defineInRange("ironVoltgunInaccuracy", 0D, 0D, 90D);
         ironVoltgunProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Voltguns")
-                .defineInRange("ironVoltgunProjectileSpeed", 160D, 0D, 64D);
+                .defineInRange("ironVoltgunProjectileSpeed", 40D, 0D, 64D);
         ironVoltgunMinimumDamage = builder
                 .comment("Configure the Minimum damage increase for Voltguns")
                 .defineInRange("ironVoltgunMinimumDamage", 1D, 0D, 5D);
