@@ -52,6 +52,7 @@
 	"tooltip.kaleidiosguns.gun.reloadspeed": "§2Reload delay: §f%d§7 s§r",
 	"tooltip.kaleidiosguns.gun.reloadspeed.modified": "§dReload delay: §f%d§7 s§r",
 	"tooltip.kaleidiosguns.gun.accuracy": "§2Effective range: §f%d§7 m§r ",
+	"tooltip.kaleidiosguns.gun.range": "§2Range: §f%d§7 m§r ",
 	"tooltip.kaleidiosguns.gun.accuracy.modified": "§dEffective range: §f%d§7 m§r",
 	"tooltip.kaleidiosguns.gun.accuracy.perfect": "§2Effective range: §fAny§r",
 	"tooltip.kaleidiosguns.gun.accuracy.perfect.modified": "§dEffective range: §fAny§r",

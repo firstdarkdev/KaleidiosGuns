@@ -1041,7 +1041,6 @@ public class GunItem extends Item {
 		if ((enchantment == ModEnchantments.cowboy) && isOneHanded) return false; //not for pistol
 		if (((enchantment == ModEnchantments.sleightOfHand)) && ((me instanceof GatlingItem) || (me.isExplosive))) return false; //not for gatling nor launcher
 		if ((enchantment == ModEnchantments.impact) && ((this == ModItems.minegunGatling) || (this == ModItems.corruptionGatling))) return false; //not for minegun
-		if ((enchantment == ModEnchantments.accelerator) && isLaserShot) return false; // not for laser gun
 
 		//only let these apply to certain gun types
 		if ((enchantment == ModEnchantments.division) && !(me instanceof ShotgunItem)) return false; //shotgun only
@@ -1113,15 +1112,26 @@ public class GunItem extends Item {
 			//now we judge how many meters it is.
 			inaccuracy = projectileSpeed * timeToInaccurate;
 
-			if (inaccuracy == Double.POSITIVE_INFINITY) {
-				if (this instanceof GatlingItem || this instanceof ShotgunItem || this.isExplosive || this.isRedstone) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect" + (isInaccuracyModified(stack) ? ".modified" : "")));
-				else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect.sniper"));
+			if (isLaserShot)
+			{
+				inaccuracy = projectileSpeed / 16.0;
+				tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.range" + (isInaccuracyModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
 			}
-			else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy" + (isInaccuracyModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
+			else
+			{
+				if (inaccuracy == Double.POSITIVE_INFINITY) {
+					if (this instanceof GatlingItem || this instanceof ShotgunItem || this.isExplosive || this.isRedstone) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect" + (isInaccuracyModified(stack) ? ".modified" : "")));
+					else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect.sniper"));
+				}
+				else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy" + (isInaccuracyModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
+			}
 
 			//Projectile Speed
 
-			tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.speed" + (isProjectileSpeedModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(projectileSpeed)));
+			if (!isLaserShot)
+			{
+				tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.speed" + (isProjectileSpeedModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(projectileSpeed)));
+			}
 
 			int cost = getCost(stack);
 			tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.cost" + (ammoCost > cost ? ".modified" : ""), cost));
