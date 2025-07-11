@@ -61,8 +61,8 @@ public interface IBullet {
 
 		//if the bullet is a plasma type, deal very high damage to a shield if one is in use.
 		//this way we let the vanilla mechanic of a shield taking damage as durability into effect
-		if ((projectile.isPlasma) && (target instanceof LivingEntity)) {
-			LivingEntity livingTarget = (LivingEntity)target;
+		if ((projectile.isPlasma || projectile.isRocket) && (target instanceof LivingEntity)) {
+			LivingEntity livingTarget = (LivingEntity) target;
 
 			if (target instanceof PlayerEntity) {
 				PlayerEntity victim = (PlayerEntity) target;
@@ -72,6 +72,12 @@ public interface IBullet {
 					world.playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.SHIELD_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
 				}
 			}
+
+		}
+
+		if ((projectile.isPlasma) && (target instanceof LivingEntity))
+		{
+			LivingEntity livingTarget = (LivingEntity) target;
 
 			if (Math.random() < KGConfig.goldPlasmaSlowChance.get()) {
 				livingTarget.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, KGConfig.goldPlasmaSlowTicks.get(), 2));

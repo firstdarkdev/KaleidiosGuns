@@ -97,6 +97,7 @@ public class GunItem extends Item {
 	protected boolean shouldSlow;
 	protected boolean isLaserShot;
 	protected boolean blindOnHeadshot;
+	protected boolean rocket;
 
 	protected SoundEvent fireSound = ModSounds.gun;
 	protected SoundEvent reloadSound = ModSounds.double_shotgunReload;
@@ -410,6 +411,7 @@ public class GunItem extends Item {
 		shot.laser = isLaserShot;
 		shot.blindOnHead = blindOnHeadshot;
 		shot.isCrystal = shouldRevenge;
+		shot.isRocket = rocket;
 
 		shot.hero = false;
 		if (isHero) {
@@ -1015,6 +1017,11 @@ public class GunItem extends Item {
 
 	public GunItem setArmorBonus(boolean bonus) {
 		this.armorBonus = bonus;
+		return this;
+	}
+
+	public GunItem setRocket(boolean isRocket) {
+		this.rocket = isRocket;
 		return this;
 	}
 

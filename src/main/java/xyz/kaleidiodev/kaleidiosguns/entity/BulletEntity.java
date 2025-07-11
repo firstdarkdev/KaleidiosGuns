@@ -102,6 +102,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	public boolean laser;
 	public boolean blindOnHead;
 	public boolean isCrystal;
+	public boolean isRocket;
 
 	protected Set<Entity> entityHitHistory = new HashSet<>();
 	public Set<Entity> headshotHistory = new HashSet<>();
