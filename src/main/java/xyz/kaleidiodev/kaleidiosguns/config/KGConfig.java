@@ -432,22 +432,22 @@ public class KGConfig {
         builder.push("pistol");
         ironPistolDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Pistols")
-                .defineInRange("ironPistolDamageModifier", 0.9D, 0.1D, 5D);
+                .defineInRange("ironPistolDamageModifier", 0.8D, 0.1D, 5D);
         ironPistolFireDelay = builder
                 .comment("Configure the Fire delay for Pistols")
-                .defineInRange("ironPistolFireDelay", 8, 0, 72000);
+                .defineInRange("ironPistolFireDelay", 12, 0, 72000);
         ironPistolEnchantability = builder
                 .comment("Configure the Enchantability for Pistols")
                 .defineInRange("ironPistolEnchantability", 5, 0, 30);
         ironPistolDurability = builder
                 .comment("Configure the Durability for Pistols")
-                .defineInRange("ironPistolDurability", 667, 0, 32767);
+                .defineInRange("ironPistolDurability", 750, 0, 32767);
         ironPistolInaccuracy = builder
                 .comment("Configure the Inaccuracy for Pistols")
                 .defineInRange("ironPistolInaccuracy", 1.6D, 0D, 90D);
         ironPistolProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Pistols")
-                .defineInRange("ironPistolProjectileSpeed", 8D, 0D, 64D);
+                .defineInRange("ironPistolProjectileSpeed", 10D, 0D, 64D);
         ironPistolSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Pistols")
                 .defineInRange("ironPistolSwitchSpeed", 2.0D, 0D, 5D);
@@ -546,7 +546,7 @@ public class KGConfig {
         builder.push("showman Handgun");
         goldShowmanDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Showman's Handguns")
-                .defineInRange("goldShowmanDamageModifier", 0.7D, 0.1D, 5D);
+                .defineInRange("goldShowmanDamageModifier", 0.5D, 0.1D, 5D);
         goldShowmanFireDelay = builder
                 .comment("Configure the Fire delay for Showman's Handguns")
                 .defineInRange("goldShowmanFireDelay", 10, 0, 72000);
@@ -555,13 +555,13 @@ public class KGConfig {
                 .defineInRange("goldShowmanEnchantability", 14, 0, 30);
          goldShowmanDurability = builder
                 .comment("Configure the Durability for Showman's Handguns")
-                .defineInRange("goldShowmanDurability", 179, 0, 32767);
+                .defineInRange("goldShowmanDurability", 750, 0, 32767);
         goldShowmanInaccuracy = builder
                 .comment("Configure the Inaccuracy for Showman's Handguns")
-                .defineInRange("goldShowmanInaccuracy", 3D, 0D, 90D);
+                .defineInRange("goldShowmanInaccuracy", 2.6D, 0D, 90D);
         goldShowmanProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Showman's Handguns")
-                .defineInRange("goldShowmanProjectileSpeed", 16D, 0D, 64D);
+                .defineInRange("goldShowmanProjectileSpeed", 14D, 0D, 64D);
         goldShowmanTwoHandedUse = builder
                 .comment("Configure the bonus for using a Showman Handgun with one hand open")
                 .defineInRange("goldShowmanTwoHandedUse", 1.4D, 0.1D, 10.0D);
@@ -591,7 +591,7 @@ public class KGConfig {
         builder.push("blessed pistol");
         emeraldBlessedDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Blessed Pistols")
-                .defineInRange("emeraldBlessedDamageModifier", 1D, 0.1D, 5D);
+                .defineInRange("emeraldBlessedDamageModifier", 0.7D, 0.1D, 5D);
         emeraldBlessedFireDelay = builder
                 .comment("Configure the Fire delay for Blessed Pistols")
                 .defineInRange("emeraldBlessedFireDelay", 3, 0, 72000);
@@ -600,7 +600,7 @@ public class KGConfig {
                 .defineInRange("emeraldBlessedEnchantability", 9, 0, 30);
         emeraldBlessedDurability = builder
                 .comment("Configure the Durability for Blessed Pistols")
-                .defineInRange("emeraldBlessedDurability", 720, 0, 32767);
+                .defineInRange("emeraldBlessedDurability", 1029, 0, 32767);
         emeraldBlessedInaccuracy = builder
                 .comment("Configure the Inaccuracy for Blessed Pistols")
                 .defineInRange("emeraldBlessedInaccuracy", 0D, 0D, 90D);
@@ -621,7 +621,7 @@ public class KGConfig {
                 .defineInRange("emeraldBlessedMeleeDamage", 2D, 0D, 40D);
         emeraldBlessedCost = builder
                 .comment("Ammo cost to fire Blessed Pistols")
-                .defineInRange("emeraldBlessedCost", 2, 0, 64);
+                .defineInRange("emeraldBlessedCost", 1, 0, 64);
         builder.pop();
 
         builder.push("shotgun");
@@ -897,22 +897,22 @@ public class KGConfig {
         builder.push("carbine");
         ironCarbineDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Carbines")
-                .defineInRange("ironCarbineDamageMultiplier", 1D, 0.5D, 5D);
+                .defineInRange("ironCarbineDamageMultiplier", 1.2D, 0.5D, 5D);
         ironCarbineFireDelay = builder
                 .comment("Configure the Fire delay for Carbines")
-                .defineInRange("ironCarbineFireDelay", 8, 0, 72000);
+                .defineInRange("ironCarbineFireDelay", 12, 0, 72000);
         ironCarbineEnchantability = builder
                 .comment("Configure the Enchantability for Carbines")
                 .defineInRange("ironCarbineEnchantability", 5, 0, 30);
         ironCarbineDurability = builder
                 .comment("Configure the Durability for Carbines")
-                .defineInRange("ironCarbineDurability", 600, 0, 32767);
+                .defineInRange("ironCarbineDurability", 400, 0, 32767);
         ironCarbineInaccuracy = builder
                 .comment("Configure the Inaccuracy for Carbines")
                 .defineInRange("ironCarbineInaccuracy", 0D, 0D, 90D);
         ironCarbineProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Carbines")
-                .defineInRange("ironCarbineProjectileSpeed", 14D, 0D, 64D);
+                .defineInRange("ironCarbineProjectileSpeed", 19D, 0D, 64D);
         ironCarbineSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Carbines")
                 .defineInRange("ironCarbineSwitchSpeed", 1.6D, 0D, 5D);
