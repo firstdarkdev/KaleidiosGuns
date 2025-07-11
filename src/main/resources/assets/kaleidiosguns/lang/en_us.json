@@ -114,6 +114,8 @@
 	"tooltip.kaleidiosguns.calibur.xp": "§dOnly accepts cleric ammo",
 	"tooltip.kaleidiosguns.laser": "Shoots limited length lasers instead of bullets",
 	"tooltip.kaleidiosguns.blind": "Blinds the target on headshot",
+	"tooltip.kaleidiosguns.rocket_bonus": "Direct hit increases explosion radius",
+	"tooltip.kaleidiosguns.rocket_shield": "Direct hit breaks shields",
 
 	"tooltip.kaleidiosguns.blaze_bullet": "Sets entities on fire§r",
 	"tooltip.kaleidiosguns.hunger_bullet": "Uses hunger as ammo§r",

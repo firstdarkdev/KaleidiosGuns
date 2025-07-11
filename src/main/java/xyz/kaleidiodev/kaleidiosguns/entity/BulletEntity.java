@@ -302,7 +302,7 @@ public class BulletEntity extends AbstractFireballEntity {
 			//a shot to the leg and up through the body will not count as a headshot!
 			if (thisEntities.size() > 0) {
 				//subtract by position so explosion is outside of block, not inside.  fixes physics
-				if (isExplosive) this.explode(bb.getCenter());
+				if (isExplosive) this.explode(bb.getCenter(), isRocket);
 
 				double bulletBBFloor = bb.getCenter().y - (bb.getYsize() / 2);
 
@@ -369,7 +369,7 @@ public class BulletEntity extends AbstractFireballEntity {
 				//solid blocks are handled different
 				//the getBlockCollisions check makes sure only to fire this if the collision box overlaps the block
 				if (someBlockState.getMaterial().blocksMotion() && this.level.getBlockCollisions(this, bb).findAny().isPresent()) {
-					if (isExplosive) explode(bb.getCenter().subtract(incPosition));
+					if (isExplosive) explode(bb.getCenter().subtract(incPosition), false);
 					else onHitBlock(bb.getCenter());
 
 					hitBlock = true;
@@ -511,6 +511,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	}
 
 	protected void giveDamage(Entity shooter, Entity victim, IBullet bullet) {
+		if (isExplosive) return;
 		if (victim.isOnFire()) lavaMode += 0x02;
 		if (isOnFire()) victim.setSecondsOnFire(5);
 		int lastHurtResistant = victim.invulnerableTime;
@@ -594,9 +595,15 @@ public class BulletEntity extends AbstractFireballEntity {
 		return true; //assume same team if anything is null
 	}
 
-	public void explode(Vector3d position) {
+	public void explode(Vector3d position, boolean directHitBonus) {
 		if (this.getShootingGun() == null) return;
 		double newRadius = this.getShootingGun().damageMultiplier;
+
+		if (directHitBonus)
+		{
+			newRadius *= KGConfig.diamondLauncherDirectHitBonus.get();
+		}
+
 
 		if (applyMode != PotionApplyMode.INJECT)
 		{

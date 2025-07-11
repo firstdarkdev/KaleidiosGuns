@@ -1190,12 +1190,14 @@ public class GunItem extends Item {
 				if (hasBlockMineAbility) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.minegun"));
 				if (isLaserShot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.laser"));
 				if (blindOnHeadshot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.blind"));
+				if (rocket) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.rocket_bonus"));
 			}
 
 			if (KGConfig.showWeaponSecrets.get()) {
 				if (isShadow) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.shadow_block"));
 				if (isWither) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.wither"));
 				if (isDefender) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.defender"));
+				if (rocket) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.rocket_shield"));
 			}
 
 			if (KGConfig.showClassDetails.get()) {

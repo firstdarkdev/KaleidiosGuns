@@ -228,6 +228,7 @@ public class KGConfig {
     public static ForgeConfigSpec.DoubleValue diamondLauncherMeleeDamage;
     public static ForgeConfigSpec.IntValue diamondLauncherCost;
     public static ForgeConfigSpec.DoubleValue diamondLauncherReplacementInaccuracy;
+    public static ForgeConfigSpec.DoubleValue diamondLauncherDirectHitBonus;
 
     public static ForgeConfigSpec.DoubleValue witherLauncherDamageMultiplier;
     public static ForgeConfigSpec.IntValue witherLauncherFireDelay;
@@ -1318,6 +1319,9 @@ public class KGConfig {
         diamondLauncherReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Rocket Launchers")
                 .defineInRange("diamondLauncherReplacementInaccuracy", 4D, 0D, 40D);
+        diamondLauncherDirectHitBonus = builder
+                .comment("Configure the radius multiplier for direct hits with Rocket Launchers")
+                .defineInRange("diamondLauncherDirectHitBonus", 1.5D, 0D, 40D);
         builder.pop();
 
         builder.push("wither cannon");
