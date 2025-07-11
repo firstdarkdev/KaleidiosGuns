@@ -1261,7 +1261,7 @@ public class KGConfig {
                 .defineInRange("potionCannonEnchantability", 14, 0, 30);
         potionCannonDurability = builder
                 .comment("Configure the Durability for Potion Cannons")
-                .defineInRange("potionCannonDurability", 45, 0, 32767);
+                .defineInRange("potionCannonDurability", 32, 0, 32767);
         potionCannonInaccuracy = builder
                 .comment("Configure the Inaccuracy for Potion Cannons")
                 .defineInRange("potionCannonInaccuracy", 0D, 0D, 90D);
@@ -1276,7 +1276,7 @@ public class KGConfig {
                 .defineInRange("potionCannonMeleeDamage", 4D, 0D, 40D);
         potionCannonCost = builder
                 .comment("Ammo cost to fire Potion Cannons")
-                .defineInRange("potionCannonCost", 12, 0, 64);
+                .defineInRange("potionCannonCost", 18, 0, 64);
         potionCannonReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Potion Cannons")
                 .defineInRange("potionCannonReplacementInaccuracy", 2D, 0D, 40D);
@@ -1300,7 +1300,7 @@ public class KGConfig {
                 .defineInRange("diamondLauncherEnchantability", 1, 0, 30);
         diamondLauncherDurability = builder
                 .comment("Configure the Durability for Rocket Launchers")
-                .defineInRange("diamondLauncherDurability", 80, 0, 32767);
+                .defineInRange("diamondLauncherDurability", 57, 0, 32767);
         diamondLauncherInaccuracy = builder
                 .comment("Configure the Inaccuracy for Rocket Launchers")
                 .defineInRange("diamondLauncherInaccuracy", 0D, 0D, 90D);
@@ -1315,7 +1315,7 @@ public class KGConfig {
                 .defineInRange("diamondLauncherMeleeDamage", 4D, 0D, 40D);
         diamondLauncherCost = builder
                 .comment("Ammo cost to fire Rocket Launchers")
-                .defineInRange("diamondLauncherCost", 18, 0, 64);
+                .defineInRange("diamondLauncherCost", 26, 0, 64);
         diamondLauncherReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Rocket Launchers")
                 .defineInRange("diamondLauncherReplacementInaccuracy", 4D, 0D, 40D);
@@ -1336,7 +1336,7 @@ public class KGConfig {
                 .defineInRange("witherLauncherEnchantability", 6, 0, 30);
         witherLauncherDurability = builder
                 .comment("Configure the Durability for Wither Launchers")
-                .defineInRange("witherLauncherDurability", 110, 0, 32767);
+                .defineInRange("witherLauncherDurability", 79, 0, 32767);
         witherLauncherInaccuracy = builder
                 .comment("Configure the Inaccuracy for Wither Launchers")
                 .defineInRange("witherLauncherInaccuracy", 0D, 0D, 90D);
@@ -1354,7 +1354,7 @@ public class KGConfig {
                 .defineInRange("witherLauncherMeleeDamage", 4D, 0D, 40D);
         witherLauncherCost = builder
                 .comment("Ammo cost to fire Wither Launchers")
-                .defineInRange("witherLauncherCost", 18, 0, 64);
+                .defineInRange("witherLauncherCost", 24, 0, 64);
         witherLauncherReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Wither Launchers")
                 .defineInRange("witherLauncherReplacementInaccuracy", 6D, 0D, 40D);
