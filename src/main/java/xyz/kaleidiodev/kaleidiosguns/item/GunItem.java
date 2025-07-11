@@ -280,7 +280,7 @@ public class GunItem extends Item {
 
 				float volume = (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.silenced, gun) > 0 ? 2.0F : 10.0F);
 
-				world.playSound(null, player.getX(), player.getY(), player.getZ(), fireSound, SoundCategory.PLAYERS, volume, 1.0F);
+				world.playSound(null, player.getX(), player.getY(), player.getZ(), fireSound, SoundCategory.PLAYERS, volume, (random.nextFloat() * 0.1f) + 0.95f);
 				player.awardStat(Stats.ITEM_USED.get(this));
 
 				CompoundNBT nbt = gun.getOrCreateTag();
@@ -290,7 +290,7 @@ public class GunItem extends Item {
 					int chambers = nbt.getInt("chambers"); //note, happens first, so the tag will get created, even if tooltip wasn't inspected first.
 					chambers--;
 					if (chambers <= 0) {
-						world.playSound(null, player.getX(), player.getY(), player.getZ(), reloadSound, SoundCategory.HOSTILE, 1.0F, 1.0F);
+						world.playSound(null, player.getX(), player.getY(), player.getZ(), reloadSound, SoundCategory.HOSTILE, 1.0F, (random.nextFloat() * 0.1f) + 0.95f);
 						chambers = this.revolutions;
 					}
 					nbt.putInt("chambers",chambers);
@@ -409,6 +409,7 @@ public class GunItem extends Item {
 		shot.shouldSlow = this.shouldSlow;
 		shot.laser = isLaserShot;
 		shot.blindOnHead = blindOnHeadshot;
+		shot.isCrystal = shouldRevenge;
 
 		shot.hero = false;
 		if (isHero) {
@@ -1095,8 +1096,10 @@ public class GunItem extends Item {
 				tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.barrels_left", nbt.getInt("chambers"), revolutions));
 				fireRate = Math.max(1, fireRate / barrelSwitchSpeed);
 			}
-			tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.firerate" + (isFireDelayModified(stack) ? ".modified" : ""), 1200 / fireRate));
+			fireRate += (burstAmount - 1) * burstSpeed;
+			tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.firerate" + (isFireDelayModified(stack) ? ".modified" : ""), (1200 / fireRate) * Math.max(burstAmount, 1)));
 
+			if (burstAmount > 1) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.burst", burstAmount));
 
 			//Accuracy
 			double inaccuracy = baseInaccuracy(stack, null);

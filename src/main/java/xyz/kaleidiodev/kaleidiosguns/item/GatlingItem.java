@@ -128,7 +128,7 @@ public class GatlingItem extends GunItem {
 
 					float volume = (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.silenced, gun) > 0 ? 2.0F : 10.0F);
 
-					world.playSound(null, player.getX(), player.getY(), player.getZ(), fireSound, SoundCategory.PLAYERS, volume, 1.0F);
+					world.playSound(null, player.getX(), player.getY(), player.getZ(), fireSound, SoundCategory.PLAYERS, volume, (random.nextFloat() * 0.1f) + 0.95f);
 					player.awardStat(Stats.ITEM_USED.get(this));
 				}
 			}
@@ -143,6 +143,7 @@ public class GatlingItem extends GunItem {
 	@Override
 	protected void addExtraStatsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip) {
 		if (KGConfig.showClassDetails.get()) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gatling.hold"));
+		tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.automatic"));
 	}
 
 	protected boolean checkTileEntities(World world, PlayerEntity player) {

@@ -101,6 +101,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	public float postCarbineHeadshot;
 	public boolean laser;
 	public boolean blindOnHead;
+	public boolean isCrystal;
 
 	protected Set<Entity> entityHitHistory = new HashSet<>();
 	public Set<Entity> headshotHistory = new HashSet<>();
@@ -312,7 +313,7 @@ public class BulletEntity extends AbstractFireballEntity {
 
 					//if the raytrace is at or above the enemy's chin, it's a headshot
 					//the chin is a third of the height from the top of the entity
-					if ((bulletBBFloor > enemyChin) && (bulletBBFloor < enemyTop) && !isExplosive && !isPlasma && !shouldBreakBlock  && !wasRevenge) {
+					if ((bulletBBFloor > enemyChin) && (bulletBBFloor < enemyTop) && !isExplosive && !isPlasma && !shouldBreakBlock  && !isCrystal) {
 						if ((getOwner() != null) && (!this.level.isClientSide()) && !(victim instanceof EndermanEntity))
 							getOwner().level.playSound(null, bb.getCenter().x, bb.getCenter().y, bb.getCenter().z, SoundEvents.PLAYER_ATTACK_CRIT, SoundCategory.VOICE, 5.0f, 1.0f);
 						headshotHistory.add(victim);
@@ -384,7 +385,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	//cannot guarantee this fires on the client side
 	protected void onHitBlock(Vector3d pos) {
 		//make a spherical poof and a sound
-		if (!this.level.isClientSide) this.level.playSound(null, pos.x, pos.y, pos.z, ModSounds.impact, SoundCategory.VOICE, 0.25f, (random.nextFloat() * 0.5f) + 0.75f);
+		if (!this.level.isClientSide) this.level.playSound(null, pos.x, pos.y, pos.z, ModSounds.impact, SoundCategory.VOICE, 0.75f, (random.nextFloat() * 0.5f) + 0.75f);
 
 		BlockPos blockPositionToMine = new BlockPos(pos);
 
