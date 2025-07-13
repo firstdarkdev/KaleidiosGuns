@@ -103,6 +103,7 @@ public class BulletEntity extends AbstractFireballEntity {
 	public boolean blindOnHead;
 	public boolean isCrystal;
 	public boolean isRocket;
+	public boolean doShrapnel;
 
 	protected Set<Entity> entityHitHistory = new HashSet<>();
 	public Set<Entity> headshotHistory = new HashSet<>();
@@ -156,7 +157,7 @@ public class BulletEntity extends AbstractFireballEntity {
 			return;
 		}
 
-		if (shouldGlow || clip) {
+		if (shouldGlow) {
 			this.setGlowing(true);
 		}
 
@@ -376,6 +377,19 @@ public class BulletEntity extends AbstractFireballEntity {
 				}
 
 				if (hitBlock) {
+					if (doShrapnel) {
+						double radius = KGConfig.blunderbussShrapnelRadius.get();
+						List<LivingEntity> entities = getExplosionAffected(bb.getCenter(), radius);
+
+						for (LivingEntity entity : entities) {
+							if (checkIsSameTeam(getOwner(), entity)) continue;
+							if (ignoreInvulnerability) entity.invulnerableTime = 0;
+							IndirectEntityDamageSource newSource = new IndirectEntityDamageSource("arrow", this, getOwner());
+							newSource.setProjectile();
+							entity.hurt(newSource, (float)KGConfig.blunderbussShrapnelDamage.get().doubleValue());
+						}
+					}
+
 					lastPos = bb.getCenter(); //may need to subtract
 					break;
 				}

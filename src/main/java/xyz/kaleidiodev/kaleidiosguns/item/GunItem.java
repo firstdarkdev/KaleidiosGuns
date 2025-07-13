@@ -98,6 +98,7 @@ public class GunItem extends Item {
 	protected boolean isLaserShot;
 	protected boolean blindOnHeadshot;
 	protected boolean rocket;
+	protected boolean doesShrapnel;
 
 	protected SoundEvent fireSound = ModSounds.gun;
 	protected SoundEvent reloadSound = ModSounds.double_shotgunReload;
@@ -412,6 +413,7 @@ public class GunItem extends Item {
 		shot.blindOnHead = blindOnHeadshot;
 		shot.isCrystal = shouldRevenge;
 		shot.isRocket = rocket;
+		shot.doShrapnel = doesShrapnel;
 
 		shot.hero = false;
 		if (isHero) {
@@ -1025,6 +1027,11 @@ public class GunItem extends Item {
 		return this;
 	}
 
+	public GunItem setShrapnel(boolean shrapnel) {
+		this.doesShrapnel = shrapnel;
+		return this;
+	}
+
 	/**
 	 *
 	 * @param barrelSwitch set the divider that divides the fire rate to denote how many ticks it takes to switch barrels
@@ -1191,6 +1198,7 @@ public class GunItem extends Item {
 				if (isLaserShot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.laser"));
 				if (blindOnHeadshot) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.blind"));
 				if (rocket) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.rocket_bonus"));
+				if (doesShrapnel) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.shrapnel"));
 			}
 
 			if (KGConfig.showWeaponSecrets.get()) {

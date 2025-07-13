@@ -111,6 +111,8 @@ public class KGConfig {
     public static ForgeConfigSpec.IntValue blunderbussCost;
     public static ForgeConfigSpec.DoubleValue blunderbussMinimumSpeed;
     public static ForgeConfigSpec.DoubleValue blunderbussMaximumSpeed;
+    public static ForgeConfigSpec.DoubleValue blunderbussShrapnelRadius;
+    public static ForgeConfigSpec.DoubleValue blunderbussShrapnelDamage;
 
     public static ForgeConfigSpec.DoubleValue goldDoubleShotgunDamageMultiplier;
     public static ForgeConfigSpec.IntValue goldDoubleShotgunFireDelay;
@@ -433,7 +435,7 @@ public class KGConfig {
         builder.push("pistol");
         ironPistolDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Pistols")
-                .defineInRange("ironPistolDamageModifier", 0.8D, 0.1D, 5D);
+                .defineInRange("ironPistolDamageModifier", 1D, 0.1D, 5D);
         ironPistolFireDelay = builder
                 .comment("Configure the Fire delay for Pistols")
                 .defineInRange("ironPistolFireDelay", 12, 0, 72000);
@@ -442,13 +444,13 @@ public class KGConfig {
                 .defineInRange("ironPistolEnchantability", 5, 0, 30);
         ironPistolDurability = builder
                 .comment("Configure the Durability for Pistols")
-                .defineInRange("ironPistolDurability", 750, 0, 32767);
+                .defineInRange("ironPistolDurability", 600, 0, 32767);
         ironPistolInaccuracy = builder
                 .comment("Configure the Inaccuracy for Pistols")
-                .defineInRange("ironPistolInaccuracy", 1.6D, 0D, 90D);
+                .defineInRange("ironPistolInaccuracy", 2D, 0D, 90D);
         ironPistolProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Pistols")
-                .defineInRange("ironPistolProjectileSpeed", 10D, 0D, 64D);
+                .defineInRange("ironPistolProjectileSpeed", 12D, 0D, 64D);
         ironPistolSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Pistols")
                 .defineInRange("ironPistolSwitchSpeed", 2.0D, 0D, 5D);
@@ -695,6 +697,12 @@ public class KGConfig {
         blunderbussMaximumSpeed = builder
                 .comment("Configure the Maximum Speed for projectiles shot from Blunderbusses")
                 .defineInRange("blunderbussMaximumSpeed", 2.0D, 0.1D, 10D);
+        blunderbussShrapnelRadius = builder
+                .comment("Configure the radius for shrapnel from Blunderbuss bullets")
+                .defineInRange("blunderbussShrapnelRadius", 3D, 0D, 16D);
+        blunderbussShrapnelDamage = builder
+                .comment("Configure the damage from shrapnel from from Blunderbuss bullets")
+                .defineInRange("blunderbussShrapnelDamage", 0.5D, 0.1D, 10D);
         builder.pop();
 
         builder.push("hero wave shotgun");
