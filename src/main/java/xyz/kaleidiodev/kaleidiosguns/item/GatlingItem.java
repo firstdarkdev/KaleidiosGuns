@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
@@ -32,6 +33,10 @@ public class GatlingItem extends GunItem {
 	@Override
 	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
+
+		CompoundNBT nbt = itemstack.getOrCreateTag();
+
+		if (!nbt.getBoolean("myTurn")) return ActionResult.fail(itemstack);
 
 		//don't fire if redstone block is not nearby
 		if (this.isRedstone) {
@@ -70,6 +75,8 @@ public class GatlingItem extends GunItem {
 			if (living instanceof PlayerEntity) {
 				PlayerEntity player = (PlayerEntity) living;
 				player.getCooldowns().addCooldown(this, getFireDelay(itemstack, player));
+
+				swapHands(player);
 			}
 		}
 	}
@@ -80,7 +87,10 @@ public class GatlingItem extends GunItem {
 			PlayerEntity player = (PlayerEntity) user;
 			ItemStack ammo = mergeStacks(player, gun);
 			//stop immediately if player is dead.
-			if (player.isDeadOrDying()) player.stopUsingItem();
+			if (player.isDeadOrDying()) {
+				player.stopUsingItem();
+				return;
+			}
 			fireGatling(world, user, gun, ticks, ammo);
 		}
 	}
