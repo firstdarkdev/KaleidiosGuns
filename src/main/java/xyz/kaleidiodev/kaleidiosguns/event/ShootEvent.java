@@ -29,6 +29,8 @@ public class ShootEvent {
             //TODO: hero wave shotgun mathematics from shot.heroStep goes here
             direction = direction.normalize().add(random.nextGaussian() * 0.0075 * shot.getInaccuracy(), random.nextGaussian() * 0.0075 * shot.getInaccuracy(), random.nextGaussian() * 0.0075 * shot.getInaccuracy()).scale(velocity);
 
+            direction = direction.yRot((float)shot.heroStep);
+
             shot.setDeltaMovement(direction);
             float horizontalDistance = MathHelper.sqrt(direction.x * direction.x + direction.z * direction.z);
             shot.yRot = (float)(MathHelper.atan2(direction.x, direction.z) * (double)(180F / (float)Math.PI));

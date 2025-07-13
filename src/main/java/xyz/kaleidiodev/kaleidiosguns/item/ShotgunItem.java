@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -62,7 +63,11 @@ public class ShotgunItem extends GunItem {
 
 			shot.heroStep = currentStep;
 
-			shot.shootFromRotation(player, player.xRot, player.yRot + currentStep, 0, (float)getProjectileSpeed(gun, player), 0.0F);
+			super.shootShot(shot, player, gun, nextInaccuracy);
+
+			Vector3d delta = shot.getDeltaMovement();
+			delta = delta.yRot(currentStep);
+			shot.setDeltaMovement(delta);
 		}
 		else
 		super.shootShot(shot, player, gun, nextInaccuracy);
