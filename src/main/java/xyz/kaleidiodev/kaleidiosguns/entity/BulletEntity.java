@@ -137,6 +137,10 @@ public class BulletEntity extends AbstractFireballEntity {
 	public void tick() {
 		//check timestamp of fire versus current world.  if longer than 5 seconds, or world time is sooner, assume the bullet was created last session rather than current
 		//force remove
+		if (getDeltaMovement().length() < 0.01f) {
+			actualTick += 20;
+		}
+
 		actualTick++;
 		if (!this.level.isClientSide) {
 			long passage = this.level.getGameTime() - ticksOnFire;
