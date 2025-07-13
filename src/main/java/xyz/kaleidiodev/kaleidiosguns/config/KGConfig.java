@@ -23,6 +23,7 @@ public class KGConfig {
     public static ForgeConfigSpec.BooleanValue showClassDetails;
     public static ForgeConfigSpec.BooleanValue showWeaponDetails;
     public static ForgeConfigSpec.BooleanValue showWeaponSecrets;
+    public static ForgeConfigSpec.IntValue xpPerShot;
 
     //Guns
     public static ForgeConfigSpec.DoubleValue ironPistolDamageMultiplier;
@@ -430,6 +431,9 @@ public class KGConfig {
         showWeaponSecrets = builder
                 .comment("Show details of secret weapon mechanics (such as the Shotgun being able to destroy some blocks).  Disabling this declutters tooltips and keeps the mechanics secret, as intended.")
                 .define("showWeaponSecrets", false);
+        xpPerShot = builder
+                .comment("Configure how much xp each shot from a Cleric Cartridge consumes")
+                .defineInRange("xpPerShot", 20, 0, 1000000);
         builder.pop();
 
         builder.push("pistol");
