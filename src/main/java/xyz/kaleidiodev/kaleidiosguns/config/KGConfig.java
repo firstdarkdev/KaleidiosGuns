@@ -933,10 +933,10 @@ public class KGConfig {
                 .defineInRange("ironCarbineCost", 2, 0, 64);
         ironCarbineMovementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst moving with Carbines")
-                .defineInRange("ironCarbineMovementInaccuracy", 0.8D, 0D, 40D);
+                .defineInRange("ironCarbineMovementInaccuracy", 1D, 0D, 40D);
         ironCarbineReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Carbines")
-                .defineInRange("ironCarbineReplacementInaccuracy", 1.5D, 0D, 40D);
+                .defineInRange("ironCarbineReplacementInaccuracy", 2D, 0D, 40D);
         ironCarbineArmorBonus = builder
                 .comment("Configure the amount of damage to tack on that is armor ignorant with Carbines")
                 .defineInRange("ironCarbineArmorBonus", 2D, 0.1D, 32767D);
@@ -977,11 +977,11 @@ public class KGConfig {
                 .comment("How many ticks each shot in a burst takes for Vex Burst Carbines")
                 .defineInRange("goldVexBurstSpeed", 2, 0, 64);
         goldVexMovementInaccuracy = builder
-                .comment("Configure the inaccuracy addition whilst moving with Carbines")
-                .defineInRange("goldVexMovementInaccuracy", 1.5D, 0D, 40D);
+                .comment("Configure the inaccuracy addition whilst moving with Vex Burst Carbines")
+                .defineInRange("goldVexMovementInaccuracy", 1.3D, 0D, 40D);
         goldVexReplacementInaccuracy = builder
-                .comment("Configure the inaccuracy addition whilst using one hand with Carbines")
-                .defineInRange("goldVexReplacementInaccuracy", 0.5D, 0D, 40D);
+                .comment("Configure the inaccuracy addition whilst using one hand with Vex Burst Carbines")
+                .defineInRange("goldVexReplacementInaccuracy", 2.6D, 0D, 40D);
         builder.pop();
 
         builder.push("minegun");

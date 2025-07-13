@@ -28,6 +28,7 @@ import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.world.NoteBlockEvent;
 import xyz.kaleidiodev.kaleidiosguns.config.KGConfig;
 import xyz.kaleidiodev.kaleidiosguns.enchantment.GunAccuracyEnchantment;
 import xyz.kaleidiodev.kaleidiosguns.enchantment.GunDamageEnchantment;
@@ -136,6 +137,11 @@ public class GunItem extends Item {
 	@Override
 	public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		ItemStack gun = player.getItemInHand(hand);
+
+		CompoundNBT nbt = gun.getOrCreateTag();
+		// For swapping with dual wields.
+		if (!nbt.getBoolean("myTurn")) return ActionResult.fail(gun);
+
 		ItemStack ammo;
 		//"Oh yeah I will use the vanilla method so that quivers can do their thing"
 		//guess what the quivers suck
@@ -270,7 +276,11 @@ public class GunItem extends Item {
 
 			IBullet bulletItem = (IBullet) (ammo.getItem() instanceof IBullet ? ammo.getItem() : ModItems.flintBullet);
 
+			CompoundNBT nbt = gun.getOrCreateTag();
+
 			if (!world.isClientSide) {
+				if (burstAmount == 0) swapHands(player);
+
 				boolean bulletFree = player.abilities.instabuild || !shouldConsumeAmmo(gun, player);
 
 				//Workaround for quivers not respecting getAmmoPredicate()
@@ -284,8 +294,6 @@ public class GunItem extends Item {
 
 				world.playSound(null, player.getX(), player.getY(), player.getZ(), fireSound, SoundCategory.PLAYERS, volume, (random.nextFloat() * 0.1f) + 0.95f);
 				player.awardStat(Stats.ITEM_USED.get(this));
-
-				CompoundNBT nbt = gun.getOrCreateTag();
 
 				if (this.revolutions > 1) {
 					if (!nbt.contains("chambers")) nbt.putInt("chambers", revolutions);
@@ -303,19 +311,14 @@ public class GunItem extends Item {
 					player.addEffect(new EffectInstance(Effects.GLOWING, KGConfig.playerGlowTicks.get(), 0));
 				}
 
-				player.getCooldowns().addCooldown(this, getActualFireDelay(gun, player));
-
 				//force both hands to cooldown.
-				if (player.getMainHandItem().getItem() == this) {
-					if (player.getOffhandItem().getItem() instanceof GunItem) {
-						player.getCooldowns().addCooldown(player.getOffhandItem().getItem(), getActualFireDelay(gun, player) + 1);
-					}
+				if (player.getMainHandItem().getItem() instanceof GunItem &&
+				player.getOffhandItem().getItem() instanceof GunItem) {
+					player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), getActualFireDelay(gun, player));
+					player.getCooldowns().addCooldown(player.getOffhandItem().getItem(), getActualFireDelay(gun, player));
 				}
-				//don't bother if two of the same weapon.
-				else if (player.getOffhandItem().getItem() != this) {
-					if (player.getOffhandItem().getItem() instanceof GunItem) {
-						player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), getActualFireDelay(gun, player) + 1);
-					}
+				else {
+					player.getCooldowns().addCooldown(this, getActualFireDelay(gun, player));
 				}
 
 				mergeStacks(player, gun);
@@ -326,6 +329,24 @@ public class GunItem extends Item {
 			return ActionResult.consume(gun);
 		}
 		return ActionResult.fail(gun);
+	}
+
+	protected void swapHands(PlayerEntity player) {
+		//switch which weapon responds to usage based on trading offhands.
+		if (player.getOffhandItem().getItem() instanceof GunItem &&
+				player.getMainHandItem().getItem() instanceof GunItem) {
+			CompoundNBT firstNbt = player.getMainHandItem().getOrCreateTag();
+			CompoundNBT secondNbt = player.getOffhandItem().getOrCreateTag();
+
+			if (firstNbt.getBoolean("myTurn")) {
+				firstNbt.putBoolean("myTurn", false);
+				secondNbt.putBoolean("myTurn", true);
+			}
+			else {
+				firstNbt.putBoolean("myTurn", true);
+				secondNbt.putBoolean("myTurn", false);
+			}
+		}
 	}
 
 	/**
@@ -564,6 +585,28 @@ public class GunItem extends Item {
 	protected void onActualInventoryTick(World world, Entity entity, ItemStack stack) {
 		CompoundNBT nbt = stack.getOrCreateTag();
 
+		// For dual wields, disable taking turns with hands if the gun is alone.
+		if (entity instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) entity;
+			if (!(player.getOffhandItem().getItem() instanceof GunItem) ||
+					!(player.getMainHandItem().getItem() instanceof GunItem)) {
+				nbt.putBoolean("myTurn", true);
+			}
+
+			// Reset to do the main hand first in the case of reload.
+			if (player.getOffhandItem().getItem() instanceof GunItem &&
+			player.getMainHandItem().getItem() instanceof GunItem) {
+				CompoundNBT firstNbt = player.getOffhandItem().getOrCreateTag();
+				CompoundNBT secondNbt = player.getMainHandItem().getOrCreateTag();
+
+				if ((firstNbt.getBoolean("myTurn") && secondNbt.getBoolean("myTurn")) ||
+						(!firstNbt.getBoolean("myTurn") && !secondNbt.getBoolean("myTurn"))) {
+					firstNbt.putBoolean("myTurn", true);
+					secondNbt.putBoolean("myTurn", false);
+				}
+			}
+		}
+
 		//get previous player velocity
 		Vector3d previousPos = new Vector3d(nbt.getDouble("previousPosX"), nbt.getDouble("previousPosY"), nbt.getDouble("previousPosZ"));
 		int stabilizerTimer = nbt.getInt("stabilizerTimer");
@@ -581,7 +624,14 @@ public class GunItem extends Item {
 		if (stabilizerTimer == 0) nbt.putInt("shotsBeforeStability", 0);
 		nbt.putInt("stabilizerTimer", stabilizerTimer);
 
-		if (burstTimer > 0) burstTimer--;
+		if (burstTimer > 0) {
+			burstTimer--;
+
+			if (burstTimer == 0 && entity instanceof PlayerEntity) {
+				PlayerEntity player = (PlayerEntity)entity;
+				swapHands(player);
+			}
+		}
 		if (burstSpeed != 0) {
 			if ((burstTimer % burstSpeed == 0) && (entity instanceof PlayerEntity) && (burstTimer > 0)) {
 				PlayerEntity player = (PlayerEntity) entity;
