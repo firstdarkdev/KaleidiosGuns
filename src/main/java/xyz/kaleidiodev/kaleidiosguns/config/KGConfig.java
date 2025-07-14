@@ -481,13 +481,13 @@ public class KGConfig {
                 .defineInRange("diamondRevolverDurability", 706, 0, 32767);
         diamondRevolverInaccuracy = builder
                 .comment("Configure the Inaccuracy for Revolvers")
-                .defineInRange("diamondRevolverInaccuracy", 1.0D, 0D, 90D);
+                .defineInRange("diamondRevolverInaccuracy", 1.4D, 0D, 90D);
         diamondRevolverProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Revolvers")
                 .defineInRange("diamondRevolverProjectileSpeed", 10D, 0D, 64D);
         diamondRevolverSpreadoutStrength = builder
                 .comment("Configure the strength a Revolver increases its spread cone every time it's used too fast")
-                .defineInRange("diamondRevolverSpreadoutStrength", 1.0D, 0D, 64D);
+                .defineInRange("diamondRevolverSpreadoutStrength", 0.7D, 0D, 64D);
         diamondRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Revolvers")
                 .defineInRange("diamondRevolverChamberSwitchSpeed", 3, 1, 72000);
@@ -520,13 +520,13 @@ public class KGConfig {
                 .defineInRange("shadowRevolverDurability", 943, 0, 32767);
         shadowRevolverInaccuracy = builder
                 .comment("Configure the Inaccuracy for Shadow Magnums")
-                .defineInRange("shadowRevolverInaccuracy", 0.8D, 0D, 90D);
+                .defineInRange("shadowRevolverInaccuracy", 1D, 0D, 90D);
         shadowRevolverProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Shadow Magnums")
                 .defineInRange("shadowRevolverProjectileSpeed", 9D, 0D, 64D);
         shadowRevolverSpreadoutStrength = builder
                 .comment("Configure the strength a Shadow Magnums increases its spread cone every time it's used too fast")
-                .defineInRange("shadowRevolverSpreadoutStrength", 0.8D, 0D, 64D);
+                .defineInRange("shadowRevolverSpreadoutStrength", 0.5D, 0D, 64D);
         shadowRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Shadow Magnums")
                 .defineInRange("shadowRevolverChamberSwitchSpeed", 4, 1, 72000);
