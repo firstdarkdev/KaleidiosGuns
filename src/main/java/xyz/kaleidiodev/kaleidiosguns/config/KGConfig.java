@@ -526,7 +526,7 @@ public class KGConfig {
                 .defineInRange("shadowRevolverProjectileSpeed", 9D, 0D, 64D);
         shadowRevolverSpreadoutStrength = builder
                 .comment("Configure the strength a Shadow Magnums increases its spread cone every time it's used too fast")
-                .defineInRange("shadowRevolverSpreadoutStrength", 0.75D, 0D, 64D);
+                .defineInRange("shadowRevolverSpreadoutStrength", 0.8D, 0D, 64D);
         shadowRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Shadow Magnums")
                 .defineInRange("shadowRevolverChamberSwitchSpeed", 3, 1, 72000);
