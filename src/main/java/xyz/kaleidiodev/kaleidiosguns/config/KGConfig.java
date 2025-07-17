@@ -508,7 +508,7 @@ public class KGConfig {
         builder.push("shadow magnum");
         shadowRevolverDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Shadow Magnums")
-                .defineInRange("shadowRevolverDamageModifier", 1D, 0.1D, 5D);
+                .defineInRange("shadowRevolverDamageModifier", 1.4D, 0.1D, 5D);
         shadowRevolverFireDelay = builder
                 .comment("Configure the Fire delay for Shadow Magnums")
                 .defineInRange("shadowRevolverFireDelay", 18, 0, 72000);
