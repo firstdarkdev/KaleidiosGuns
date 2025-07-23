@@ -31,7 +31,28 @@ public class XPBulletItem extends BulletItem {
 
 	@Override
 	public boolean hasAmmo(ItemStack stack, PlayerEntity player, ItemStack gunItem) {
-		return player.totalExperience >= costToUse(gunItem) * KGConfig.xpPerShot.get();
+		return currentXP(player) >= costToUse(gunItem) * KGConfig.xpPerShot.get();
+	}
+
+	// Manual workaround since commands don't grant xp the way they should do
+	private int currentXP(PlayerEntity player) {
+		int totalXP = 0;
+
+		for (int i = 0; i <= player.experienceLevel; i++)
+		{
+			if (i == player.experienceLevel) {
+				totalXP += (int)(player.experienceProgress * player.getXpNeededForNextLevel());
+			}
+			else {
+				if (i >= 30) {
+					totalXP += 112 + (i - 30) * 9;
+				} else {
+					totalXP += i >= 15 ? 37 + (i - 15) * 5 : 7 + i * 2;
+				}
+			}
+		}
+
+		return totalXP;
 	}
 
 	@Override

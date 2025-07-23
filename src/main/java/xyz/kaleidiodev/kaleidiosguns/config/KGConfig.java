@@ -433,7 +433,7 @@ public class KGConfig {
                 .define("showWeaponSecrets", false);
         xpPerShot = builder
                 .comment("Configure how much xp each shot from a Cleric Cartridge consumes")
-                .defineInRange("xpPerShot", 20, 0, 1000000);
+                .defineInRange("xpPerShot", 7, 0, 1000000);
         builder.pop();
 
         builder.push("pistol");
