@@ -35,6 +35,7 @@
 	"tooltip.kaleidiosguns.bullet.durability": "§2Durability usage: §f%s§r",
 	"tooltip.kaleidiosguns.gun.damage.flat": "§2Damage: §f+%s§r",
 	"tooltip.kaleidiosguns.gun.damage.mult": "§2Damage: §fx%s§r",
+	"tooltip.kaleidiosguns.gun.headshot.mult": "§2Critical Damage: §fx%s§r",
 	"tooltip.kaleidiosguns.gun.damage.both": "§2Damage: §fx%s +%s§r",
 	"tooltip.kaleidiosguns.gun.damage.explosion": "§2Explosion radius: §f%s§7 m§r",
 	"tooltip.kaleidiosguns.gun.damage.flat.modified": "§dDamage: §f+%s§r",

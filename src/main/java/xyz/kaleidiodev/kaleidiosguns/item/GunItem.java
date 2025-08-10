@@ -46,6 +46,7 @@ import static xyz.kaleidiodev.kaleidiosguns.KaleidiosGuns.VivecraftForgeExtensio
 
 public class GunItem extends Item {
 
+	protected double headshotMultiplier;
 	protected int bonusDamage;
 	public double damageMultiplier;
 	public int hadLava;
@@ -430,11 +431,12 @@ public class GunItem extends Item {
 		shot.silenced = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.silenced, gun) == 1;
 		shot.armorBonus = this.armorBonus;
 		shot.shouldSlow = this.shouldSlow;
-		shot.laser = isLaserShot;
-		shot.blindOnHead = blindOnHeadshot;
-		shot.isCrystal = shouldRevenge;
-		shot.isRocket = rocket;
-		shot.doShrapnel = doesShrapnel;
+		shot.laser = this.isLaserShot;
+		shot.blindOnHead = this.blindOnHeadshot;
+		shot.isCrystal = this.shouldRevenge;
+		shot.isRocket = this.rocket;
+		shot.doShrapnel = this.doesShrapnel;
+		shot.headshotMultiplier = this.headshotMultiplier;
 
 		shot.hero = false;
 		if (isHero) {
@@ -1082,6 +1084,11 @@ public class GunItem extends Item {
 		return this;
 	}
 
+	public GunItem setHeadshotMultiplier(double multiplier) {
+		this.headshotMultiplier = multiplier;
+		return this;
+	}
+
 	/**
 	 *
 	 * @param barrelSwitch set the divider that divides the fire rate to denote how many ticks it takes to switch barrels
@@ -1151,6 +1158,10 @@ public class GunItem extends Item {
 						tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.damage.mult" + (isDamageModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damageMultiplier)));
 				} else if (damageBonus != 0)
 					tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.damage.flat" + (isDamageModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damageBonus)));
+			}
+
+			if (headshotMultiplier > 1) {
+				tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.headshot.mult", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotMultiplier)));
 			}
 
 			//Fire rate
@@ -1308,6 +1319,10 @@ public class GunItem extends Item {
 
 	@Override
 	public int getUseDuration(ItemStack pStack) {
+		if (burstAmount > 1) {
+			return Math.max(getFireDelay(pStack, null) - (burstAmount * burstSpeed), 1);
+		}
+
 		return Math.max(getFireDelay(pStack, null), 1);
 	}
 }
