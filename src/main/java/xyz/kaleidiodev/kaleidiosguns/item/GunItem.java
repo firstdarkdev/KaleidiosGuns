@@ -1111,7 +1111,7 @@ public class GunItem extends Item {
 		if ((enchantment instanceof GunAccuracyEnchantment) && hasPerfectAccuracy()) return false; //not for sniper
 		if ((enchantment instanceof GunDamageEnchantment) && isExplosive) return false; //not for launcher
 		if ((enchantment == ModEnchantments.cowboy) && isOneHanded) return false; //not for pistol
-		if (((enchantment == ModEnchantments.sleightOfHand)) && ((me instanceof GatlingItem) || (me.isExplosive))) return false; //not for gatling nor launcher
+		if (((enchantment == ModEnchantments.sleightOfHand)) && (me instanceof GatlingItem)) return false; //not for gatling
 		if ((enchantment == ModEnchantments.impact) && ((this == ModItems.minegunGatling) || (this == ModItems.corruptionGatling))) return false; //not for minegun
 		if ((enchantment == ModEnchantments.accelerator) && (this.isLaserShot)) return false; // not for laser
 
