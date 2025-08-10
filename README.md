@@ -2,7 +2,9 @@
 
 MOST CODE HERE IS COPYRIGHT (C) 2024 First Dark Development, All Rights Reserved.
 
-Some source code is forked from Lykrast/Guns-Without-Roses with the intention of utilizing the source properly under the MIT License.  Any lines found in Lykrast's fork that are also found here retain MIT license and retain Lykrast's Copyright notice.
+Some source code is forked from Lykrast/Guns-Without-Roses with the intention of utilizing the source properly which permission was given here.  Any lines found in Lykrast's fork that are also found here retain MIT license (which was ONLY for the 1.16.5 branch, the license on modern versions has changed) and retain Lykrast's Copyright notice.
+
+https://github.com/Lykrast/GunsWithoutRoses/issues/21
 
 Please do not fork this mod for use in Minecraft, nor redistribute this mod nor its binaries, nor create brand new games utilizing this mod's code, its visual designs, nor weapon mechanics in their entirety (borrowing some is permitted).
 
