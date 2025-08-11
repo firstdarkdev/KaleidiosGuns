@@ -455,13 +455,13 @@ public class KGConfig {
         builder.push("pistol");
         ironPistolHeadshotMultiplier = builder
                 .comment("Define the Headshot multiplier for Pistols")
-                .defineInRange("ironPistolHeadshotMultiplier", 1.69D, 0.1D, 5D);
+                .defineInRange("ironPistolHeadshotMultiplier", 1.55D, 0.1D, 5D);
         ironPistolDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Pistols")
                 .defineInRange("ironPistolDamageMultiplier", 1D, 0.1D, 5D);
         ironPistolFireDelay = builder
                 .comment("Configure the Fire delay for Pistols")
-                .defineInRange("ironPistolFireDelay", 12, 0, 72000);
+                .defineInRange("ironPistolFireDelay", 11, 0, 72000);
         ironPistolEnchantability = builder
                 .comment("Configure the Enchantability for Pistols")
                 .defineInRange("ironPistolEnchantability", 5, 0, 30);
@@ -488,13 +488,13 @@ public class KGConfig {
         builder.push("revolver");
         diamondRevolverHeadshotMultiplier = builder
                 .comment("Define the Headshot multiplier for Revolvers")
-                .defineInRange("diamondRevolverHeadshotMultiplier", 1.55D, 0.1D, 5D);
+                .defineInRange("diamondRevolverHeadshotMultiplier", 2.17D, 0.1D, 5D);
         diamondRevolverDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Revolvers")
                 .defineInRange("diamondRevolverDamageModifier", 1.1D, 0.1D, 5D);
         diamondRevolverFireDelay = builder
                 .comment("Configure the Fire delay for Revolvers")
-                .defineInRange("diamondRevolverFireDelay", 16, 0, 72000);
+                .defineInRange("diamondRevolverFireDelay", 32, 0, 72000);
         diamondRevolverEnchantability = builder
                 .comment("Configure the Enchantability for Revolvers")
                 .defineInRange("diamondRevolverEnchantability", 1, 0, 30);
@@ -503,16 +503,16 @@ public class KGConfig {
                 .defineInRange("diamondRevolverDurability", 1091, 0, 32767);
         diamondRevolverInaccuracy = builder
                 .comment("Configure the Inaccuracy for Revolvers")
-                .defineInRange("diamondRevolverInaccuracy", 1.4D, 0D, 90D);
+                .defineInRange("diamondRevolverInaccuracy", 1D, 0D, 90D);
         diamondRevolverProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Revolvers")
-                .defineInRange("diamondRevolverProjectileSpeed", 10D, 0D, 64D);
+                .defineInRange("diamondRevolverProjectileSpeed", 10.5D, 0D, 64D);
         diamondRevolverSpreadoutStrength = builder
                 .comment("Configure the strength a Revolver increases its spread cone every time it's used too fast")
-                .defineInRange("diamondRevolverSpreadoutStrength", 0.7D, 0D, 64D);
+                .defineInRange("diamondRevolverSpreadoutStrength", 0.5D, 0D, 64D);
         diamondRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Revolvers")
-                .defineInRange("diamondRevolverChamberSwitchSpeed", 2, 1, 72000);
+                .defineInRange("diamondRevolverChamberSwitchSpeed", 4, 1, 72000);
         diamondRevolverStabilityTime = builder
                 .comment("Configure how long the gun must not be fired for spread cone to stabilize on Revolvers")
                 .defineInRange("diamondRevolverStabilityTime", 16, 1, 72000);
@@ -530,34 +530,34 @@ public class KGConfig {
         builder.push("shadow magnum");
         shadowRevolverHeadshotMultiplier = builder
                 .comment("Define the Headshot multiplier for Shadow Magnums")
-                .defineInRange("shadowRevolverHeadshotMultiplier", 1.48D, 0.1D, 5D);
+                .defineInRange("shadowRevolverHeadshotMultiplier", 2.17D, 0.1D, 5D);
         shadowRevolverDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Shadow Magnums")
-                .defineInRange("shadowRevolverDamageMultiplier", 0.9D, 0.1D, 5D);
+                .defineInRange("shadowRevolverDamageMultiplier", 1D, 0.1D, 5D);
         shadowRevolverFireDelay = builder
                 .comment("Configure the Fire delay for Shadow Magnums")
-                .defineInRange("shadowRevolverFireDelay", 18, 0, 72000);
+                .defineInRange("shadowRevolverFireDelay", 24, 0, 72000);
         shadowRevolverEnchantability = builder
                 .comment("Configure the Enchantability for Shadow Magnums")
                 .defineInRange("shadowRevolverEnchantability", 6, 0, 30);
         shadowRevolverDurability = builder
                 .comment("Configure the Durability for Shadow Magnums")
-                .defineInRange("shadowRevolverDurability", 1467, 0, 32767);
+                .defineInRange("shadowRevolverDurability", 1375, 0, 32767);
         shadowRevolverInaccuracy = builder
                 .comment("Configure the Inaccuracy for Shadow Magnums")
                 .defineInRange("shadowRevolverInaccuracy", 1D, 0D, 90D);
         shadowRevolverProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Shadow Magnums")
-                .defineInRange("shadowRevolverProjectileSpeed", 9D, 0D, 64D);
+                .defineInRange("shadowRevolverProjectileSpeed", 11D, 0D, 64D);
         shadowRevolverSpreadoutStrength = builder
                 .comment("Configure the strength a Shadow Magnums increases its spread cone every time it's used too fast")
-                .defineInRange("shadowRevolverSpreadoutStrength", 0.8D, 0D, 64D);
+                .defineInRange("shadowRevolverSpreadoutStrength", 0.6D, 0D, 64D);
         shadowRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Shadow Magnums")
-                .defineInRange("shadowRevolverChamberSwitchSpeed", 3, 1, 72000);
+                .defineInRange("shadowRevolverChamberSwitchSpeed", 4, 1, 72000);
         shadowRevolverStabilityTime = builder
                 .comment("Configure how long the gun must not be fired for spread cone to stabilize on Shadow Magnums")
-                .defineInRange("shadowRevolverStabilityTime", 18, 1, 72000);
+                .defineInRange("shadowRevolverStabilityTime", 12, 1, 72000);
         shadowRevolverShadowAdditionalMultiplier = builder
                 .comment("Define the additional damage multiplier for Shadow Magnums when the player is standing in the dark.  Is additive to base multiplier.")
                 .defineInRange("shadowRevolverShadowAdditionalMultiplier", 0.5D, 0.1D, 5D);
@@ -578,22 +578,22 @@ public class KGConfig {
         builder.push("showman Handgun");
         goldShowmanHeadshotMultiplier = builder
                 .comment("Define the Headshot multiplier for Showman's Handguns")
-                .defineInRange("goldShowmanHeadshotMultiplier", 1.56D, 0.1D, 5D);
+                .defineInRange("goldShowmanHeadshotMultiplier", 1.37D, 0.1D, 5D);
         goldShowmanDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Showman's Handguns")
-                .defineInRange("goldShowmanDamageMultiplier", 0.67D, 0.1D, 5D);
+                .defineInRange("goldShowmanDamageMultiplier", 0.5D, 0.1D, 5D);
         goldShowmanFireDelay = builder
                 .comment("Configure the Fire delay for Showman's Handguns")
-                .defineInRange("goldShowmanFireDelay", 22, 0, 72000);
+                .defineInRange("goldShowmanFireDelay", 14, 0, 72000);
         goldShowmanEnchantability = builder
                 .comment("Configure the Enchantability for Showman's Handguns")
                 .defineInRange("goldShowmanEnchantability", 14, 0, 30);
         goldShowmanDurability = builder
                 .comment("Configure the Durability for Showman's Handguns")
-                .defineInRange("goldShowmanDurability", 563, 0, 32767);
+                .defineInRange("goldShowmanDurability", 750, 0, 32767);
         goldShowmanInaccuracy = builder
                 .comment("Configure the Inaccuracy for Showman's Handguns")
-                .defineInRange("goldShowmanInaccuracy", 2.6D, 0D, 90D);
+                .defineInRange("goldShowmanInaccuracy", 2D, 0D, 90D);
         goldShowmanProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Showman's Handguns")
                 .defineInRange("goldShowmanProjectileSpeed", 14D, 0D, 64D);
@@ -896,7 +896,7 @@ public class KGConfig {
                 .defineInRange("diamondSniperInaccuracy", 0D, 0D, 90D);
         diamondSniperProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Snipers")
-                .defineInRange("diamondSniperProjectileSpeed", 31D, 0D, 64D);
+                .defineInRange("diamondSniperProjectileSpeed", 34D, 0D, 64D);
         diamondSniperSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Snipers")
                 .defineInRange("diamondSniperSwitchSpeed", 1.6D, 0D, 5D);
@@ -935,7 +935,7 @@ public class KGConfig {
                 .defineInRange("emeraldMusketInaccuracy", 0D, 0D, 90D);
         emeraldMusketProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Muskets")
-                .defineInRange("emeraldMusketProjectileSpeed", 33D, 0D, 64D);
+                .defineInRange("emeraldMusketProjectileSpeed", 36D, 0D, 64D);
         emeraldMusketSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Muskets")
                 .defineInRange("emeraldMusketSwitchSpeed", 1.6D, 0D, 5D);
@@ -980,7 +980,7 @@ public class KGConfig {
                 .defineInRange("ironCarbineInaccuracy", 0D, 0D, 90D);
         ironCarbineProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Carbines")
-                .defineInRange("ironCarbineProjectileSpeed", 19D, 0D, 64D);
+                .defineInRange("ironCarbineProjectileSpeed", 20D, 0D, 64D);
         ironCarbineSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Carbines")
                 .defineInRange("ironCarbineSwitchSpeed", 1.6D, 0D, 5D);
@@ -1022,7 +1022,7 @@ public class KGConfig {
                 .defineInRange("goldVexInaccuracy", 0D, 0D, 90D);
         goldVexProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Vex Burst Carbines")
-                .defineInRange("goldVexProjectileSpeed", 13D, 0D, 64D);
+                .defineInRange("goldVexProjectileSpeed", 17D, 0D, 64D);
         goldVexSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Vex Burst Carbines")
                 .defineInRange("goldVexSwitchSpeed", 1.6D, 0D, 5D);
