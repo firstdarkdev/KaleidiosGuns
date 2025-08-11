@@ -944,7 +944,7 @@ public class KGConfig {
                 .defineInRange("emeraldMusketMeleeDamage", 8D, 0D, 40D);
         emeraldMusketPostMeleeMultiplier = builder
                 .comment("Multiplier for a shot's damage for the first shot after a successful melee with Muskets")
-                .defineInRange("emeraldMusketPostMeleeMultiplier", 1.5D, 0.1D, 5D);
+                .defineInRange("emeraldMusketPostMeleeMultiplier", 1.3D, 0.1D, 5D);
         emeraldMusketPostMeleeCount = builder
                 .comment("How many shots the melee blessing lasts for Muskets")
                 .defineInRange("emeraldMusketPostMeleeCount", 3, 1, 60);
