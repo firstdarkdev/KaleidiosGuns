@@ -1475,10 +1475,10 @@ public class KGConfig {
                 .defineInRange("blazeBulletDamage", 5D, 1D, 20D);
         hungerBulletDamage = builder
                 .comment("Configure the damage of Hunger Bullets")
-                .defineInRange("hungerBulletDamage", 5D, 1D, 20D);
+                .defineInRange("hungerBulletDamage", 6D, 1D, 20D);
         xpBulletDamage = builder
                 .comment("Configure the damage of XP Bullets.  This tier should always be the highest tier of damage.")
-                .defineInRange("xpBulletDamage", 6D, 1D, 20D);
+                .defineInRange("xpBulletDamage", 7D, 1D, 20D);
         flintBulletDurabilityDamage = builder
                 .comment("Configure the durability usage of Flint Bullets.  This tier should always be minimal damage")
                 .defineInRange("flintBulletDurabilityDamage", 1, 1, 32767);
