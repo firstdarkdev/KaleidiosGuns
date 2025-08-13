@@ -494,7 +494,7 @@ public class KGConfig {
                 .defineInRange("diamondRevolverDamageModifier", 1.1D, 0.1D, 5D);
         diamondRevolverFireDelay = builder
                 .comment("Configure the Fire delay for Revolvers")
-                .defineInRange("diamondRevolverFireDelay", 32, 0, 72000);
+                .defineInRange("diamondRevolverFireDelay", 30, 0, 72000);
         diamondRevolverEnchantability = builder
                 .comment("Configure the Enchantability for Revolvers")
                 .defineInRange("diamondRevolverEnchantability", 1, 0, 30);
@@ -512,10 +512,10 @@ public class KGConfig {
                 .defineInRange("diamondRevolverSpreadoutStrength", 0.7D, 0D, 64D);
         diamondRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Revolvers")
-                .defineInRange("diamondRevolverChamberSwitchSpeed", 4, 1, 72000);
+                .defineInRange("diamondRevolverChamberSwitchSpeed", 3, 1, 72000);
         diamondRevolverStabilityTime = builder
                 .comment("Configure how long the gun must not be fired for spread cone to stabilize on Revolvers")
-                .defineInRange("diamondRevolverStabilityTime", 16, 1, 72000);
+                .defineInRange("diamondRevolverStabilityTime", 20, 1, 72000);
         diamondRevolverSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Revolvers")
                 .defineInRange("diamondRevolverSwitchSpeed", 2.0D, 0D, 5D);
@@ -536,7 +536,7 @@ public class KGConfig {
                 .defineInRange("shadowRevolverDamageMultiplier", 0.9D, 0.1D, 5D);
         shadowRevolverFireDelay = builder
                 .comment("Configure the Fire delay for Shadow Magnums")
-                .defineInRange("shadowRevolverFireDelay", 24, 0, 72000);
+                .defineInRange("shadowRevolverFireDelay", 18, 0, 72000);
         shadowRevolverEnchantability = builder
                 .comment("Configure the Enchantability for Shadow Magnums")
                 .defineInRange("shadowRevolverEnchantability", 6, 0, 30);
@@ -554,10 +554,10 @@ public class KGConfig {
                 .defineInRange("shadowRevolverSpreadoutStrength", 1.0D, 0D, 64D);
         shadowRevolverChamberSwitchSpeed = builder
                 .comment("Configure a divider of base fire delay how long switching chambers takes between shots on Shadow Magnums")
-                .defineInRange("shadowRevolverChamberSwitchSpeed", 4, 1, 72000);
+                .defineInRange("shadowRevolverChamberSwitchSpeed", 2, 1, 72000);
         shadowRevolverStabilityTime = builder
                 .comment("Configure how long the gun must not be fired for spread cone to stabilize on Shadow Magnums")
-                .defineInRange("shadowRevolverStabilityTime", 12, 1, 72000);
+                .defineInRange("shadowRevolverStabilityTime", 14, 1, 72000);
         shadowRevolverShadowAdditionalMultiplier = builder
                 .comment("Define the additional damage multiplier for Shadow Magnums when the player is standing in the dark.  Is additive to base multiplier.")
                 .defineInRange("shadowRevolverShadowAdditionalMultiplier", 0.27D, 0.1D, 5D);
