@@ -1,13 +1,18 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"pattern": [
-		"###",
-		"#G#",
-		"###"
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:flint"
+		},
+		{
+			"item": "minecraft:gunpowder"
+		},
+		{
+			"item": "minecraft:paper"
+		}
 	],
-	"key": {
-		"#": { "item": "minecraft:flint" },
-		"G": { "tag": "forge:gunpowder" }
-	},
-	"result": { "item": "kaleidiosguns:flint_bullet", "count": 32 }
+	"result": {
+		"item": "kaleidiosguns:flint_bullet",
+		"count": 32
+	}
 }
