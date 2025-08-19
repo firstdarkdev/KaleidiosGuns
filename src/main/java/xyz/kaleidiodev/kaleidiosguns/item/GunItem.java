@@ -673,7 +673,7 @@ public class GunItem extends Item {
 	}
 
 	public double getDamageMultiplier(ItemStack stack) {
-		return damageMultiplier * ((double)getFireDelayRaw(stack) / (double)fireDelay);
+		return damageMultiplier;
 	}
 
 	/**
