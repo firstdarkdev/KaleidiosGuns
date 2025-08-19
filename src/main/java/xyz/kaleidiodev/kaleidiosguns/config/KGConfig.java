@@ -854,7 +854,7 @@ public class KGConfig {
                 .defineInRange("netheriteShotgunProjectileSpeed", 6.5D, 0D, 64D);
         netheriteShotgunEntityCap = builder
                 .comment("Configure the amount of entities at once for Vampire Shotguns")
-                .defineInRange("netheriteShotgunEntityCap", 2, 1, 25);
+                .defineInRange("netheriteShotgunEntityCap", 7, 1, 25);
         netheriteShotgunEntityHurt = builder
                 .comment("Configure the amount of damage stolen per entity for Vampire Shotguns")
                 .defineInRange("netheriteShotgunEntityHurt", 2D, 0D, 1000D);
@@ -878,25 +878,25 @@ public class KGConfig {
         builder.push("sniper rifle");
         diamondSniperHeadshotMultiplier = builder
                 .comment("Define the Headshot multiplier for Snipers")
-                .defineInRange("diamondSniperHeadshotMultiplier", 2.55D, 0.1D, 5D);
+                .defineInRange("diamondSniperHeadshotMultiplier", 2.58D, 0.1D, 5D);
         diamondSniperDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Snipers")
-                .defineInRange("diamondSniperDamageMultiplier", 1.5D, 0.1D, 5D);
+                .defineInRange("diamondSniperDamageMultiplier", 1.67D, 0.1D, 5D);
         diamondSniperFireDelay = builder
                 .comment("Configure the Fire delay for Snipers")
-                .defineInRange("diamondSniperFireDelay", 24, 0, 72000);
+                .defineInRange("diamondSniperFireDelay", 20, 0, 72000);
         diamondSniperEnchantability = builder
                 .comment("Configure the Enchantability for Snipers")
                 .defineInRange("diamondSniperEnchantability", 1, 0, 30);
         diamondSniperDurability = builder
                 .comment("Configure the Durability for Snipers")
-                .defineInRange("diamondSniperDurability", 711, 0, 32767);
+                .defineInRange("diamondSniperDurability", 719, 0, 32767);
         diamondSniperInaccuracy = builder
                 .comment("Configure the Inaccuracy for Snipers")
                 .defineInRange("diamondSniperInaccuracy", 0D, 0D, 90D);
         diamondSniperProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Snipers")
-                .defineInRange("diamondSniperProjectileSpeed", 34D, 0D, 64D);
+                .defineInRange("diamondSniperProjectileSpeed", 32D, 0D, 64D);
         diamondSniperSwitchSpeed = builder
                 .comment("Configure the Weapon Switch Speed for Snipers")
                 .defineInRange("diamondSniperSwitchSpeed", 1.6D, 0D, 5D);
