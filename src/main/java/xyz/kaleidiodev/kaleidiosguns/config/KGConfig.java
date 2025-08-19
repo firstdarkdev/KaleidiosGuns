@@ -1181,7 +1181,7 @@ public class KGConfig {
                 .defineInRange("diamondAssaultHeadshotMultiplier", 1.24D, 0.1D, 5D);
         diamondAssaultDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Assault Rifles")
-                .defineInRange("diamondAssaultDamageMultiplier", 0.45D, 0.1D, 5D);
+                .defineInRange("diamondAssaultDamageMultiplier", 0.90D, 0.1D, 5D);
         diamondAssaultFireDelay = builder
                 .comment("Configure the Fire delay for Assault Rifles")
                 .defineInRange("diamondAssaultFireDelay", 3, 0, 72000);
@@ -1220,7 +1220,7 @@ public class KGConfig {
                 .defineInRange("lavaSmgHeadshotMultiplier", 1.28D, 0.1D, 5D);
         lavaSmgDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Lava Bound SMGs")
-                .defineInRange("lavaSmgDamageMultiplier", 0.24D, 0.1D, 5D);
+                .defineInRange("lavaSmgDamageMultiplier", 0.48D, 0.1D, 5D);
         lavaSmgFireDelay = builder
                 .comment("Configure the Fire delay for Lava Bound SMGs")
                 .defineInRange("lavaSmgFireDelay", 2, 0, 72000);
@@ -1259,7 +1259,7 @@ public class KGConfig {
                 .defineInRange("goldPlasmaHeadshotMultiplier", 1D, 0.1D, 5D);
         goldPlasmaDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Plasma Rifles")
-                .defineInRange("goldPlasmaDamageMultiplier", 0.34D, 0.1D, 5D);
+                .defineInRange("goldPlasmaDamageMultiplier", 0.68D, 0.1D, 5D);
         goldPlasmaFireDelay = builder
                 .comment("Configure the Fire delay for Plasma Rifles")
                 .defineInRange("goldPlasmaFireDelay", 2, 0, 72000);
@@ -1304,7 +1304,7 @@ public class KGConfig {
                 .defineInRange("lmgDefenderHeadshotMultiplier", 1.47D, 0.1D, 5D);
         lmgDefenderDamageMultiplier = builder
                 .comment("Define the Damage multiplier for LMG Defenders")
-                .defineInRange("lmgDefenderDamageMultiplier", 0.33D, 0.1D, 5D);
+                .defineInRange("lmgDefenderDamageMultiplier", 0.66D, 0.1D, 5D);
         lmgDefenderFireDelay = builder
                 .comment("Configure the Fire delay for LMG Defenders")
                 .defineInRange("lmgDefenderFireDelay", 3, 0, 72000);

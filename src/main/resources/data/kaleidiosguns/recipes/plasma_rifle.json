@@ -3,13 +3,14 @@
 	"pattern": [
 		"DIF",
 		"DII",
-		" SI"
+		"LSI"
 	],
 	"key": {
 		"D": { "tag": "forge:ingots/gold" },
 		"I": { "tag": "forge:ingots/iron" },
 		"S": { "tag": "forge:rods/wooden" },
-		"F": { "item": "minecraft:flint" }
+		"F": { "item": "minecraft:blaze_rod" },
+		"L": { "item": "minecraft:lapis_block" }
 	},
 	"result": { "item": "kaleidiosguns:plasma_rifle" }
 }
