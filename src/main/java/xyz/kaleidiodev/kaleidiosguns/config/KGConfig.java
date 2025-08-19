@@ -1527,7 +1527,7 @@ public class KGConfig {
         builder.push("impact enchantment");
         impactDamageIncrease = builder
                 .comment("How much damage increase per impact level")
-                .defineInRange("impactDamageIncrease", 0.5D, 0.1D, 20D);
+                .defineInRange("impactDamageIncrease", 1.0D, 0.1D, 20D);
         builder.pop();
 
         builder.push("bullseye enchantment");
