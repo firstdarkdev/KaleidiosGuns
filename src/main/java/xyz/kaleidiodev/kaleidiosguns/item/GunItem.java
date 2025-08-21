@@ -385,11 +385,7 @@ public class GunItem extends Item {
 		shot.setNoGravity(!isGravity);
 
 		double someDamage = (shot.getDamage() + getBonusDamage(gun, player)) * getDamageMultiplier(gun);
-		if (gun.getItem() instanceof ShotgunItem) {
-			ShotgunItem thisGun = (ShotgunItem)gun.getItem();
-			shot.setDamage(someDamage * ((double)thisGun.getBaseBulletCount() / (double)thisGun.getBulletCount(gun, player)));
-		}
-		else if ((player.getMainHandItem().isEmpty() ^ player.getOffhandItem().isEmpty()) && twoHandBonus) shot.setDamage(someDamage * KGConfig.goldShowmanTwoHandedUse.get());
+		if ((player.getMainHandItem().isEmpty() ^ player.getOffhandItem().isEmpty()) && twoHandBonus) shot.setDamage(someDamage * KGConfig.goldShowmanTwoHandedUse.get());
 		else shot.setDamage(someDamage);
 
 		shot.wasRevenge = (this.shouldRevenge && (player.getHealth() < (player.getMaxHealth() * KGConfig.emeraldBlessedHealthMinimumRatio.get())));
@@ -1108,11 +1104,11 @@ public class GunItem extends Item {
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		//Disallow these for specific gun types
 		GunItem me = (GunItem) stack.getItem();
-		if ((enchantment instanceof GunAccuracyEnchantment) && hasPerfectAccuracy()) return false; //not for sniper
+		if ((enchantment instanceof GunAccuracyEnchantment) && (hasPerfectAccuracy() || (me instanceof ShotgunItem))) return false; //not for sniper or shotgun
 		if ((enchantment instanceof GunDamageEnchantment) && isExplosive) return false; //not for launcher
 		if ((enchantment == ModEnchantments.cowboy) && isOneHanded) return false; //not for pistol
 		if (((enchantment == ModEnchantments.sleightOfHand)) && (me instanceof GatlingItem)) return false; //not for gatling
-		if ((enchantment == ModEnchantments.impact) && (this instanceof GatlingItem)) return false; //not for gatling
+		if ((enchantment == ModEnchantments.impact) && ((this instanceof GatlingItem) || (this instanceof ShotgunItem))) return false; //not for gatling or shotgun
 		if ((enchantment == ModEnchantments.accelerator) && (this.isLaserShot)) return false; // not for laser
 
 		//only let these apply to certain gun types
@@ -1201,6 +1197,15 @@ public class GunItem extends Item {
 				if (inaccuracy == Double.POSITIVE_INFINITY) {
 					if (this instanceof GatlingItem || this instanceof ShotgunItem || this.isExplosive || this.isRedstone) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect" + (isInaccuracyModified(stack) ? ".modified" : "")));
 					else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.perfect.sniper"));
+				}
+				else if (this instanceof ShotgunItem)
+				{
+					ShotgunItem shotgunItem = (ShotgunItem)this;
+					double change = ((double)shotgunItem.getBulletCount(stack)/ (double)shotgunItem.getBaseBulletCount());
+					if (change > 1) {
+						tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy.modified_division", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
+					}
+					else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy" + (isInaccuracyModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
 				}
 				else tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.gun.accuracy" + (isInaccuracyModified(stack) ? ".modified" : ""), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(inaccuracy)));
 			}

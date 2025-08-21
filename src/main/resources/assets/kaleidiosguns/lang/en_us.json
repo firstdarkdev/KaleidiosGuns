@@ -57,6 +57,7 @@
 	"tooltip.kaleidiosguns.gun.burst": "§2Burst count: §f%s§r",
 	"tooltip.kaleidiosguns.gun.automatic": "Fully automatic fire",
 	"tooltip.kaleidiosguns.gun.accuracy.modified": "§dEffective range: §f%d§7 m§r",
+	"tooltip.kaleidiosguns.gun.accuracy.modified_division": "§cEffective range: §f%d§7 m§r",
 	"tooltip.kaleidiosguns.gun.accuracy.perfect": "§2Effective range: §fAny§r",
 	"tooltip.kaleidiosguns.gun.accuracy.perfect.modified": "§dEffective range: §fAny§r",
 	"tooltip.kaleidiosguns.gun.accuracy.perfect.sniper": "§2Effective range: §fAny §7unless moving§r",

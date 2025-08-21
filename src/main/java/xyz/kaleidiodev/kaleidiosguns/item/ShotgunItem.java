@@ -38,7 +38,7 @@ public class ShotgunItem extends GunItem {
 		//always fire vampire check first
 		vampireBulletCount(player);
 		//then fire bullet count check.  this will ensure that division only applies to bullets AFTER vampire check has added its own so damage scales accordingly
-		for (int i = 0; i < getBulletCount(gun, player); i++) {
+		for (int i = 0; i < getBulletCount(gun); i++) {
 			currentShot = i;
 			super.fireWeapon(world, player, gun, ammo, bulletItem, bulletFree);
 		}
@@ -46,7 +46,7 @@ public class ShotgunItem extends GunItem {
 
 	@Override
 	protected void addExtraStatsTooltip(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip) {
-		tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.shotgun.shots" + (isProjectileCountModified(stack) ? ".modified" : ""), getBulletCount(stack, null)));
+		tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.shotgun.shots" + (isProjectileCountModified(stack) ? ".modified" : ""), getBulletCount(stack)));
 		if (isVampire) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.vampire_shotgun"));
 		if (isWave) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.wave"));
 		if (isSpread) tooltip.add(new TranslationTextComponent("tooltip.kaleidiosguns.spread"));
@@ -58,7 +58,7 @@ public class ShotgunItem extends GunItem {
 			//shoot in a vertical wave by scrolling through xRots step by step, no inaccuracy
 			float bounds = (float)((KGConfig.heroShotgunInaccuracy.get() * 2) / ((EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.bullseye, gun) * KGConfig.bullseyeAccuracyIncrease.get()) + 1.0));
 			float shotHorizBound = -bounds / 2; //get only one side of the arc
-			float shotHorizStep = (bounds / (getBulletCount(gun, player) - 1)); //subtract by one so we don't count the first shot, which is always on the lower bound.
+			float shotHorizStep = (bounds / (getBulletCount(gun) - 1)); //subtract by one so we don't count the first shot, which is always on the lower bound.
 			float currentStep = shotHorizBound + (shotHorizStep * currentShot);
 
 			shot.heroStep = currentStep;
@@ -80,16 +80,16 @@ public class ShotgunItem extends GunItem {
 		} else return super.baseSpeed(stack, null);
 	}
 
-	protected int getBulletCount(ItemStack stack, @Nullable PlayerEntity player) {
+	protected int getBulletCount(ItemStack stack) {
 		int divisionFactor = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.division, stack) * KGConfig.divisionCountIncrease.get();
 
 		return getBaseBulletCount() + divisionFactor;
 	}
 
 	@Override
-	public double getInaccuracy(ItemStack stack, @Nullable PlayerEntity player) {
+	public double baseInaccuracy(ItemStack stack, @Nullable PlayerEntity player) {
 		if (this.isWave) return 0;  //trick inaccuracy into being 0 so the wave attack specifies angles on its own
-		else return super.getInaccuracy(stack, player);
+		else return super.baseInaccuracy(stack, player) * ((double)getBulletCount(stack)/ (double)getBaseBulletCount());
 	}
 
 	protected void vampireBulletCount(@Nullable PlayerEntity player) {
