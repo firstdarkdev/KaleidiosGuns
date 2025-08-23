@@ -695,7 +695,7 @@ public class KGConfig {
                 .defineInRange("diamondShotgunMeleeDamage", 4D, 0D, 40D);
         diamondShotgunCost = builder
                 .comment("Ammo cost to fire Shotguns")
-                .defineInRange("diamondShotgunCost", 1, 0, 64);
+                .defineInRange("diamondShotgunCost", 2, 0, 64);
         builder.pop();
 
         builder.push("blunderbuss");
@@ -731,7 +731,7 @@ public class KGConfig {
                 .defineInRange("blunderbussMeleeDamage", 4D, 0D, 40D);
         blunderbussCost = builder
                 .comment("Ammo cost to fire Blunderbusses")
-                .defineInRange("blunderbussCost", 1, 0, 64);
+                .defineInRange("blunderbussCost", 2, 0, 64);
         blunderbussMinimumSpeed = builder
                 .comment("Configure the Minimum Speed for projectiles shot from Blunderbusses")
                 .defineInRange("blunderbussMinimumSpeed", 0.5D, 0.1D, 10D);
@@ -872,7 +872,7 @@ public class KGConfig {
                 .defineInRange("netheriteShotgunMeleeDamage", 4D, 0D, 40D);
         netheriteShotgunCost = builder
                 .comment("Ammo cost to fire Vampire Shotguns")
-                .defineInRange("netheriteShotgunCost", 1, 0, 64);
+                .defineInRange("netheriteShotgunCost", 2, 0, 64);
         builder.pop();
 
         builder.push("sniper rifle");
@@ -905,7 +905,7 @@ public class KGConfig {
                 .defineInRange("diamondSniperMeleeDamage", 3D, 0D, 40D);
         diamondSniperCost = builder
                 .comment("Ammo cost to fire Snipers")
-                .defineInRange("diamondSniperCost", 1, 0, 64);
+                .defineInRange("diamondSniperCost", 2, 0, 64);
         diamondSniperMovementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst moving with Snipers")
                 .defineInRange("diamondSniperMovementInaccuracy", 2.5D, 0D, 40D);
@@ -950,7 +950,7 @@ public class KGConfig {
                 .defineInRange("emeraldMusketPostMeleeCount", 3, 1, 60);
         emeraldMusketCost = builder
                 .comment("Ammo cost to fire Muskets")
-                .defineInRange("emeraldMusketCost", 1, 0, 64);
+                .defineInRange("emeraldMusketCost", 2, 0, 64);
         emeraldMusketMovementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst moving with Muskets")
                 .defineInRange("emeraldMusketMovementInaccuracy", 3D, 0D, 40D);
@@ -1370,7 +1370,7 @@ public class KGConfig {
                 .defineInRange("potionCannonMeleeDamage", 4D, 0D, 40D);
         potionCannonCost = builder
                 .comment("Ammo cost to fire Potion Cannons")
-                .defineInRange("potionCannonCost", 1, 0, 64);
+                .defineInRange("potionCannonCost", 4, 0, 64);
         potionCannonReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Potion Cannons")
                 .defineInRange("potionCannonReplacementInaccuracy", 2D, 0D, 40D);
@@ -1412,7 +1412,7 @@ public class KGConfig {
                 .defineInRange("diamondLauncherMeleeDamage", 4D, 0D, 40D);
         diamondLauncherCost = builder
                 .comment("Ammo cost to fire Rocket Launchers")
-                .defineInRange("diamondLauncherCost", 1, 0, 64);
+                .defineInRange("diamondLauncherCost", 4, 0, 64);
         diamondLauncherReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Rocket Launchers")
                 .defineInRange("diamondLauncherReplacementInaccuracy", 5D, 0D, 40D);
@@ -1454,7 +1454,7 @@ public class KGConfig {
                 .defineInRange("witherLauncherMeleeDamage", 4D, 0D, 40D);
         witherLauncherCost = builder
                 .comment("Ammo cost to fire Wither Launchers")
-                .defineInRange("witherLauncherCost", 1, 0, 64);
+                .defineInRange("witherLauncherCost", 4, 0, 64);
         witherLauncherReplacementInaccuracy = builder
                 .comment("Configure the inaccuracy addition whilst using one hand with Wither Launchers")
                 .defineInRange("witherLauncherReplacementInaccuracy", 6D, 0D, 40D);
