@@ -1106,7 +1106,7 @@ public class KGConfig {
                 .defineInRange("netheriteMinegunInaccuracy", 0D, 0D, 90D);
         netheriteMinegunProjectileSpeed = builder
                 .comment("Configure the Projectile Speed for Nethermaykr")
-                .defineInRange("netheriteMinegunProjectileSpeed", 3.2D, 0D, 64D);
+                .defineInRange("netheriteMinegunProjectileSpeed", 3D, 0D, 64D);
         netheriteMinegunMineChance = builder
                 .comment("Configure the Break Block Chance for Nethermaykr")
                 .defineInRange("netheriteMinegunMineChance", 0.33D, 0D, 1D);
