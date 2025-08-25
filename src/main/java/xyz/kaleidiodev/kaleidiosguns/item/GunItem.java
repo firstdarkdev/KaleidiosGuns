@@ -1108,7 +1108,7 @@ public class GunItem extends Item {
 		if ((enchantment instanceof GunDamageEnchantment) && isExplosive) return false; //not for launcher
 		if ((enchantment == ModEnchantments.cowboy) && isOneHanded) return false; //not for pistol
 		if (((enchantment == ModEnchantments.sleightOfHand)) && (me instanceof GatlingItem)) return false; //not for gatling
-		if ((enchantment == ModEnchantments.impact) && ((this instanceof GatlingItem) || (this instanceof ShotgunItem) || (shouldCollateral))) return false; //not for gatling or shotgun or collateral shots
+		if ((enchantment == ModEnchantments.impact) && ((this instanceof GatlingItem) || (this instanceof ShotgunItem) || (shouldCollateral) || (armorBonus))) return false; //not for gatling or shotgun or collateral shots or enchantment ignoring shots
 		if ((enchantment == ModEnchantments.accelerator) && (this.isLaserShot)) return false; // not for laser
 
 		//only let these apply to certain gun types
