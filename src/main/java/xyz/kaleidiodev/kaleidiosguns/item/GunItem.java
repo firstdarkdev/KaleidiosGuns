@@ -148,7 +148,6 @@ public class GunItem extends Item {
 		//guess what the quivers suck
 		ammo = mergeStacks(player, gun);
 		//don't use if trying to use flint bullets on launcher
-		if (this.isExplosive && (ammo.getItem() == ModItems.flintBullet)) return ActionResult.fail(gun);
 		if (!caliburCheck(EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.calibur, gun), ammo.getItem())) return ActionResult.fail(gun);
 
 		//don't fire if redstone block is not nearby
@@ -228,8 +227,6 @@ public class GunItem extends Item {
 				}
 			}
 		}
-
-		if (isExplosive && player.abilities.instabuild && (newAmmo.getItem() == ModItems.flintBullet)) newAmmo = new ItemStack(ModItems.ironBullet);
 
 		return newAmmo;
 	}

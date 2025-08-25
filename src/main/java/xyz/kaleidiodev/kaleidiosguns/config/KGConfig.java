@@ -375,6 +375,7 @@ public class KGConfig {
     public static ForgeConfigSpec.IntValue xpBulletDurabilityDamage;
     public static ForgeConfigSpec.IntValue hungerBulletDurability;
     public static ForgeConfigSpec.IntValue xpBulletDurability;
+    public static ForgeConfigSpec.DoubleValue ironBulletExplosionMultiplier;
 
     //Minegun balance curve
     public static ForgeConfigSpec.DoubleValue mineGunSecondLevel;
@@ -1500,6 +1501,9 @@ public class KGConfig {
         xpBulletDurability = builder
                 .comment("Configure the durability of XP Bullets")
                 .defineInRange("xpBulletDurability", 128, 1, 32767);
+        ironBulletExplosionMultiplier = builder
+                .comment("Configure the explosion radius multiplier for Iron Bullets")
+                .defineInRange("ironBulletExplosionMultiplier", 1.3D, 0.1D, 20D);
         builder.pop();
 
         builder.push("minegun_config");

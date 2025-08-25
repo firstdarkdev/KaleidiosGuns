@@ -618,6 +618,8 @@ public class BulletEntity extends AbstractFireballEntity {
 		if (this.getShootingGun() == null) return;
 		double newRadius = this.getShootingGun().damageMultiplier;
 
+		if (this.getItem().getItem() == ModItems.ironBullet) newRadius *= KGConfig.ironBulletExplosionMultiplier.get();
+
 		if (directHitBonus)
 		{
 			newRadius *= KGConfig.diamondLauncherDirectHitBonus.get();
