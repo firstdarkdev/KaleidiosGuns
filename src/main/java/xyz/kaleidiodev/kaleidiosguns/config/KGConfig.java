@@ -1052,7 +1052,7 @@ public class KGConfig {
                 .defineInRange("diamondMinegunHeadshotMultiplier", 1D, 0.1D, 5D);
         diamondMinegunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Mineguns")
-                .defineInRange("diamondMinegunDamageMultiplier", 0.69D, 0.1D, 5D);
+                .defineInRange("diamondMinegunDamageMultiplier", 1.38D, 0.1D, 5D);
         diamondMinegunFireDelay = builder
                 .comment("Configure the Fire delay for Mineguns")
                 .defineInRange("diamondMinegunFireDelay", 3, 0, 72000);
@@ -1091,7 +1091,7 @@ public class KGConfig {
                 .defineInRange("netheriteMinegunHeadshotMultiplier", 1D, 0.1D, 5D);
         netheriteMinegunDamageMultiplier = builder
                 .comment("Define the Damage multiplier for Nethermaykr")
-                .defineInRange("netheriteMinegunDamageMultiplier", 0.465D, 0.1D, 5D);
+                .defineInRange("netheriteMinegunDamageMultiplier", 0.93D, 0.1D, 5D);
         netheriteMinegunFireDelay = builder
                 .comment("Configure the Fire delay for Nethermaykr")
                 .defineInRange("netheriteMinegunFireDelay", 2, 0, 72000);
