@@ -35,7 +35,7 @@ public class BulletItem extends Item implements IBullet {
 
 	@Override
 	public BulletEntity createProjectile(World world, ItemStack stack, LivingEntity shooter, boolean isPlasma) {
-		ItemStack fake = new ItemStack(this);
+		ItemStack fake = stack.copy();
 
 		//because for whatever reason inheritance and overriding won't pass the tag between methods...
 		if ((this instanceof XPBulletItem) ||
@@ -71,7 +71,16 @@ public class BulletItem extends Item implements IBullet {
 	}
 
 	@Override
-	public boolean isFoil(ItemStack pStack) {
-		return pStack.getOrCreateTag().getBoolean("isPlasma");
+	public boolean isFoil(ItemStack pStack)
+	{
+		// don't destructively create a tag.  Just get if it exists.
+		if (pStack.getTag() == null)
+		{
+			return false;
+		}
+		else
+		{
+			return pStack.getTag().getBoolean("isPlasma");
+		}
 	}
 }
